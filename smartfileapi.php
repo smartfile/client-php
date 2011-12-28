@@ -19,13 +19,16 @@ function http_request($uri, $data=null, $method) {
         $host_header .= ":" . $port;
     } else
         $port = 80;
-    $data = http_build_query($data);
+    if (!is_null($data))
+        $data = http_build_query($data);
+    else
+        $data = '';
     $auth = base64_encode(API_KEY . ":" . API_PWD);
     # We use fsockopen to perform our HTTP request as that is the
     # most compatible way of doing so. This method should work on
     # just about any PHP installation and does not require cURL
     # or any other HTTP extensions.
-    $fp = @fsockopen($url_parts['host'], $port, $errno, $errstr, 30); 
+    $fp = @fsockopen($url_parts['host'], $port, $errno, $errstr, 30);
     if (!$fp)
         throw new Exception("Error contacting Server: " . $errstr);
     fputs($fp,  $method . " " . $url_parts['path'] . " HTTP/1.1\r\n" .
@@ -47,8 +50,11 @@ function http_request($uri, $data=null, $method) {
     $sep = strpos($response, "\r\n");
     $http_status = substr($response, 0, $sep);
     list($ignored, $http_status, $ignored) = split(" ", $http_status);
-    if ($http_status != '201') {
-        # Non-201 status, so parse out the message and inform the caller
+    if (($method == 'GET' && $http_status != 200) ||
+        ($method == 'POST' && $http_status != 201) ||
+        ($method == 'PUT' && $http_status != 200) ||
+        ($method == 'DELETE' && $http_status != 204)) {
+        # Non-success status, so parse out the message and inform the caller
         # via an Exception.
         $sep = strpos($response, "\r\n\r\n");
         $response = substr($response, $sep + 4);
@@ -69,6 +75,14 @@ function create_user($fullname, $username, $password, $email) {
         "email"         => $email,
     );
     http_request('/users/add/', $data, 'POST');
+}
+
+# This function makes the User delete API call. It uses the http_request
+# function to handle the transport. Additional API calls could be supported
+# simply by writing additional wrappers that create the $data array and
+# use http_request to do the grunt work.
+function delete_user($username) {
+    http_request('/users/delete/' . $username . '/', null, 'DELETE');
 }
 
 # A short function to ask the user a question and return their
