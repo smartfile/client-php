@@ -13,3 +13,4 @@ This is a fully working API client for SmartFile. It allows you to interact with
 Contributors
 ----
  * Ben Timby <btimby@gmail.com>
+ * Ryan Johnston <github@shopandlearn.net>
