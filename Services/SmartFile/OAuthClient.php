@@ -1,4 +1,3 @@
-#!/usr/bin/php
 <?php
 /**
  * SmartFile PHP SDK
@@ -27,7 +26,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- *
  * @category  Web_Services
  * @package   SmartFile
  * @author    Ben Timby <btimby@gmail.com>
@@ -36,42 +34,76 @@
  * @license   See LICENSE file
  * @version   GIT: $Id$
  * @link      http://pear.php.net/package/SmartFile
- * @since     File available since Release 1.0
+ * @since     File available since Release 2.1
  */
 
-class Services_SmartFile
-{
-
-
-
-
-
-}
+require_once 'Client.php';
 
 /**
- * A short function to ask the user a question and return their
- * response.
+ *  API client that uses OAuth tokens. Layers a more complex form of
+ *  authentication useful for 3rd party access on top of the base Client.
  *
- * @param string $prompt Prompt
- *
- * @return string
+ * @category  Web_Services
+ * @package   SmartFile_Client
+ * @author    Ryan Johnston <github@shopandlearn.net>
+ * @copyright 2012 SmartFile
+ * @license   See LICENSE file
+ * @link      http://pear.php.net/package/SmartFile
  */
-function prompt($prompt='')
+Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
 {
-    echo $prompt;
-    return trim(fgets(STDIN));
+    /**
+     * Actually makes the HTTP request
+     *
+     * @param string $uri Web Universal Resource Indicator
+     *
+     * @return array
+     */
+    public function doRequest($uri)
+    {
+
+
+
+    }
+
+    /**
+     * The first step of the OAuth workflow.
+     *
+     * @param string $callback Callback to call once complete
+     *
+     * @return string
+     */
+    public function getRequestToken($callback=null)
+    {
+
+
+
+    }
+
+    /**
+     * The second step of the OAuth workflow.
+     *
+     * @return string
+     */
+    public function getAuthorizationUrl()
+    {
+
+
+    }
+
+    /**
+     * The final step of the OAuth workflow. After this the client can make
+     * API calls.
+     *
+     * @return array
+     */
+    public function getAccessToken()
+    {
+
+
+
+    }
+
 }
 
-/**
- * Main function for command line
- *
- * @return null
- */
-function main()
-{
-
-}
-
-// Start things off in main()
-main();
 ?>

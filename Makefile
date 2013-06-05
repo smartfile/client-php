@@ -5,4 +5,4 @@ test:
 	phpunit --verbose smartfiletest.php
 
 verify:
-	phpcs --standard=PEAR smartfileapi.php
+	phpcs --standard=PEAR .
