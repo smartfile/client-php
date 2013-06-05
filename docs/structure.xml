@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2.0.0a12" title="">
+  <file path="smartfileapi.php" hash="5526cc0f672526d97c6f7cdd09e41bd9" package="SmartFile">
+    <docblock line="3">
+      <description>SmartFile PHP SDK</description>
+      <long-description>&lt;p&gt;PHP version 5&lt;/p&gt;
+
+&lt;p&gt;LICENSE:&lt;/p&gt;</long-description>
+      <tag line="3" name="category" description="Api"/>
+      <tag line="3" name="package" description="SmartFile"/>
+      <tag line="3" name="author" description="Ben Timby &lt;btimby@gmail.com&gt;"/>
+      <tag line="3" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+      <tag line="3" name="copyright" description="2012 Ben Timby"/>
+      <tag line="3" name="license" description="See LICENSE file"/>
+      <tag line="3" name="version" description="GIT: $Id$"/>
+      <tag line="3" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      <tag line="3" name="since" description="File available since Release 1.0"/>
+    </docblock>
+    <constant namespace="global" line="26" package="SmartFile">
+      <name>API_URL</name>
+      <full_name>\API_URL</full_name>
+      <value>"http://app.smartfile.com/api/1"</value>
+    </constant>
+    <constant namespace="global" line="27" package="SmartFile">
+      <name>API_KEY</name>
+      <full_name>\API_KEY</full_name>
+      <value>"api-key"</value>
+    </constant>
+    <constant namespace="global" line="28" package="SmartFile">
+      <name>API_PWD</name>
+      <full_name>\API_PWD</full_name>
+      <value>"api-password"</value>
+    </constant>
+    <function namespace="global" line="45" package="SmartFile">
+      <name>httpRequest</name>
+      <full_name>\httpRequest</full_name>
+      <docblock line="32">
+        <description>This function performs an HTTP request and parses the response.</description>
+        <long-description>&lt;p&gt;It raises an exception if the server cannot be contacted or if
+the server returns a status other than 201. Any status other
+that 201 results in the exception receiving the HTTP status in
+addition to the returned error message.&lt;/p&gt;</long-description>
+        <tag line="32" name="param" description="Url of the Request" type="string" variable="$uri">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="32" name="param" description="Http Method" type="string" variable="$method">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="32" name="param" description="Http Parameters" type="array" variable="$data">
+          <type by_reference="false">array</type>
+        </tag>
+        <tag line="32" name="return" description="" type="null">
+          <type by_reference="false">null</type>
+        </tag>
+      </docblock>
+      <argument line="45">
+        <name>$uri</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="45">
+        <name>$method</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="45">
+        <name>$data</name>
+        <default>null</default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="global" line="119" package="SmartFile">
+      <name>createUser</name>
+      <full_name>\createUser</full_name>
+      <docblock line="106">
+        <description>This function makes the User add API call.</description>
+        <long-description>&lt;p&gt;It uses the http_request
+function to handle the transport. Additional API calls could be supported
+simply by writing additional wrappers that create the $data array and
+use http_request to do the grunt work.&lt;/p&gt;</long-description>
+        <tag line="106" name="param" description="User Full Name" type="string" variable="$fullname">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="106" name="param" description="User Login" type="string" variable="$username">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="106" name="param" description="User password" type="string" variable="$password">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="106" name="param" description="User Email" type="string" variable="$email">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="106" name="return" description="" type="null">
+          <type by_reference="false">null</type>
+        </tag>
+      </docblock>
+      <argument line="119">
+        <name>$fullname</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="119">
+        <name>$username</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="119">
+        <name>$password</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="119">
+        <name>$email</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="global" line="140" package="SmartFile">
+      <name>deleteUser</name>
+      <full_name>\deleteUser</full_name>
+      <docblock line="130">
+        <description>This function makes the User delete API call.</description>
+        <long-description>&lt;p&gt;It uses the http_request
+function to handle the transport. Additional API calls could be supported
+simply by writing additional wrappers that create the $data array and
+use http_request to do the grunt work.&lt;/p&gt;</long-description>
+        <tag line="130" name="param" description="User Login" type="string" variable="$username">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="130" name="return" description="" type="null">
+          <type by_reference="false">null</type>
+        </tag>
+      </docblock>
+      <argument line="140">
+        <name>$username</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="global" line="153" package="SmartFile">
+      <name>prompt</name>
+      <full_name>\prompt</full_name>
+      <docblock line="145">
+        <description>A short function to ask the user a question and return their
+response.</description>
+        <long-description></long-description>
+        <tag line="145" name="param" description="Prompt" type="string" variable="$prompt">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="145" name="return" description="" type="string">
+          <type by_reference="false">string</type>
+        </tag>
+      </docblock>
+      <argument line="153">
+        <name>$prompt</name>
+        <default>''</default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="global" line="164" package="SmartFile">
+      <name>main</name>
+      <full_name>\main</full_name>
+      <docblock line="159">
+        <description>Main function for command line</description>
+        <long-description></long-description>
+        <tag line="159" name="return" description="" type="null">
+          <type by_reference="false">null</type>
+        </tag>
+      </docblock>
+    </function>
+  </file>
+  <package name="SmartFile" full_name="SmartFile"/>
+  <namespace name="global" full_name="global"/>
+  <marker count="0">todo</marker>
+  <marker count="0">fixme</marker>
+  <deprecated count="0"/>
+</project>

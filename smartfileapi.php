@@ -119,10 +119,10 @@ function httpRequest($uri, $method, $data=null)
 function createUser($fullname, $username, $password, $email)
 {
     $data = array(
-        "name"          => $fullname,
-        "username"      => $username,
-        "password"      => $password,
-        "email"         => $email,
+        "name"       => $fullname,
+        "username"   => $username,
+        "password"   => $password,
+        "email"      => $email,
     );
     httpRequest('/users/add/', 'POST', $data);
 }
