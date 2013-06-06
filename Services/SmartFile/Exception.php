@@ -78,10 +78,10 @@ class Service_SmartFile_RequestException extends Service_SmartFile_APIException
 class Service_SmartFile_ResponseException extends Service_SmartFile_APIException
 {
 
-    /* Parse response to add more info about the exception
+    /** Parse response to add more info about the exception
      *
      * @param string $http_status HTTP Status code
-     * @param string $responese   HTTP Response
+     * @param string $response    HTTP Response
      *
      * @return null
      */
@@ -95,27 +95,27 @@ class Service_SmartFile_ResponseException extends Service_SmartFile_APIException
         catch (Exception $e)
         {
             $catchelse = false;
-            if ($http_status == 404)
-            {
+            if ($http_status == 404) {
                 $message ='Invalid URL, check your API path';
-            }
-            else
-            {
+            } else {
                 $message = 'Server error; check response for errors';
             }
         }
-        if($catchelse) //try...catch...else
-        {
-            if ($http_status == 400 && array_key_exists('field_errors', $json))
-            {
-                $message = $json['field_errors'];
-            }
-            else
-            {
+        if ($catchelse) {
+            //try...catch...else
+            if (array_key_exists('field_errors', $json)) {
+                if (is_array($json['field_errors'])) {
+                    $message = json_encode($json);
+                } else {
+                    $message = $json['field_errors'];
+                }
+            } else {
                 $message = $json['detail'];
             }
         }
-        if(!$message){ $message = $response; }
+        if (!$message) {
+            $message = $response;
+        }
         parent::__construct($message);
     }
 }

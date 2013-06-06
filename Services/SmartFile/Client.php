@@ -49,7 +49,7 @@ require_once 'Exception.php';
  * @license   See LICENSE file
  * @link      http://pear.php.net/package/SmartFile
  */
-abstract class Service_SmartFile_Client
+class Service_SmartFile_Client
 {
 
     // {{{ public properties
@@ -66,11 +66,11 @@ abstract class Service_SmartFile_Client
     /**
      * This function decodes a chunked http response
      *
-     * @param string $str           Http Response to decode
+     * @param string $str Http Response to decode
      *
      * @return string
      */
-    private function decode_chunked($str)
+    private function _decodeChunked($str)
     {
         for ($res = ''; !empty($str); $str = trim($str)) {
             $pos = strpos($str, "\r\n");
@@ -97,7 +97,11 @@ abstract class Service_SmartFile_Client
      */
     protected function doRequest($uri, $method, $data=null, $extra_headers='')
     {
-        $url = $this->api_base_url . $uri;
+        if(substr($uri, 0, 4) == 'http'){
+            $url = $uri;
+        } else {
+            $url = $this->api_base_url . $uri;
+        }
         $url_parts = parse_url($url);
         $host_header = $url_parts['host'];
         if (array_key_exists('port', $url_parts)) {
@@ -118,7 +122,9 @@ abstract class Service_SmartFile_Client
         // or any other HTTP extensions.
         $fp = @fsockopen($url_parts['host'], $port, $errno, $errstr, 30);
         if (!$fp) {
-            throw new Service_SmartFile_RequestException('Error contacting Server: ' . $errstr);
+            throw new Service_SmartFile_RequestException(
+                'Error contacting Server: ' . $errstr
+            );
         }
         fputs(
             $fp,  $method . ' ' . $url_parts['path'] . " HTTP/1.1\r\n" .
@@ -149,7 +155,7 @@ abstract class Service_SmartFile_Client
      *
      * @return array
      */
-    private function request($uri, $method, $data=null)
+    private function _request($uri, $method, $data=null)
     {
         $response = $this->doRequest($uri, $method, $data);
 
@@ -160,7 +166,7 @@ abstract class Service_SmartFile_Client
         $method = strtolower($method);
         $sep = strpos($response, "\r\n\r\n");
         $response = substr($response, $sep + 4);
-        $response = trim($this->decode_chunked($response));
+        $response = trim($this->_decodeChunked($response));
         if (($method == 'get' && $http_status != 200)
             || ($method == 'post' && $http_status != 201)
             || ($method == 'put' && $http_status != 200)
@@ -184,7 +190,7 @@ abstract class Service_SmartFile_Client
      */
     public function get($endpoint, $data=null)
     {
-        return $this->request($endpoint, 'get', $data);
+        return $this->_request($endpoint, 'get', $data);
     }
 
     /**
@@ -197,7 +203,7 @@ abstract class Service_SmartFile_Client
      */
     public function put($endpoint, $data=null)
     {
-        return $this->request($endpoint, 'put', $data);
+        return $this->_request($endpoint, 'put', $data);
     }
 
     /**
@@ -210,7 +216,7 @@ abstract class Service_SmartFile_Client
      */
     public function post($endpoint, $data=null)
     {
-        return $this->request($endpoint, 'post', $data);
+        return $this->_request($endpoint, 'post', $data);
     }
 
     /**
@@ -223,7 +229,7 @@ abstract class Service_SmartFile_Client
      */
     public function delete($endpoint, $data=null)
     {
-        return $this->request($endpoint, 'delete', $data);
+        return $this->_request($endpoint, 'delete', $data);
     }
 }
 

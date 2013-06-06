@@ -2,7 +2,9 @@ document:
 	phpdoc -d . -t docs
 
 test:
-	phpunit --verbose smartfiletest.php
+	cd tests
+	phpunit --verbose alltests.php
+	cd ..
 
 verify:
-	phpcs --standard=PEAR .
+	phpcs --standard=PEAR Services/SmartFile/*.php

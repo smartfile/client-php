@@ -57,13 +57,13 @@ Class Service_SmartFile_BasicClient extends Service_SmartFile_Client
      * SmartFile Api Key
      * @var string
      */
-    private $api_key = '';
+    private $_api_key = '';
 
     /**
      * SmartFile Api password
      * @var string
      */
-    private $api_pwd = '';
+    private $_api_pwd = '';
 
     // }}}
     // {{{ __construct()
@@ -71,10 +71,16 @@ Class Service_SmartFile_BasicClient extends Service_SmartFile_Client
     /**
      * Private constructor. Set the api key and pass once
      * when you instantiate this class.
+     *
+     * @param string $key  API key
+     * @param string $pass API Password
+     *
+     * @return null
      */
-    function __construct($key, $pass) {
-        $this->api_key = $key;
-        $this->api_pwd = $pass;
+    function __construct($key, $pass)
+    {
+        $this->_api_key = $key;
+        $this->_api_pwd = $pass;
     }
 
     // }}}
@@ -92,7 +98,7 @@ Class Service_SmartFile_BasicClient extends Service_SmartFile_Client
      */
     public function doRequest($uri, $method, $data=null, $extra_headers='')
     {
-        $auth = base64_encode($this->api_key . ":" . $this->api_pwd);
+        $auth = base64_encode($this->_api_key . ":" . $this->_api_pwd);
         $extra_headers = $extra_headers . "Authorization: Basic " . $auth . "\r\n";
         return parent::doRequest($uri, $method, $data, $extra_headers);
 
