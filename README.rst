@@ -49,6 +49,11 @@ Some of the details this library takes care of are:
 Basic Authentication
 --------------------
 
+ .. code:: php
+
+       include_once 'Services/SmartFile/BasicClient.php';
+       $api = new Service_SmartFile_BasicClient('**********', '**********');
+       $api->get('/ping');
 
 
 OAuth Authentication
