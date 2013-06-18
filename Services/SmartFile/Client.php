@@ -70,7 +70,7 @@ class Service_SmartFile_Client
      *
      * @return string
      */
-    protected function _decodeChunked($str)
+    protected function decodeChunked($str)
     {
         for ($res = ''; !empty($str); $str = trim($str)) {
             $pos = strpos($str, "\r\n");
@@ -97,7 +97,7 @@ class Service_SmartFile_Client
      */
     protected function doRequest($uri, $method, $data=null, $extra_headers='')
     {
-        if(substr($uri, 0, 4) == 'http'){
+        if (substr($uri, 0, 4) == 'http') {
             $url = $uri;
         } else {
             $url = $this->api_base_url . $uri;
@@ -165,8 +165,8 @@ class Service_SmartFile_Client
         $method = strtolower($method);
         $sep = strpos($response, "\r\n\r\n");
         $response = substr($response, $sep + 4);
-        if(stristr($headers, 'Transfer-Encoding: chunked')){
-            $response = $this->_decodeChunked($response);
+        if (stristr($headers, 'Transfer-Encoding: chunked')) {
+            $response = $this->decodeChunked($response);
         }
         $response = trim($response);
         if (($method == 'get' && $http_status != 200)

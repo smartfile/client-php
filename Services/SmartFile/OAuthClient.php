@@ -79,28 +79,32 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
 
     /**
      * SmartFile Request Token
-     * This is given to you after you call getRequestToken() and should be saved by your application.
+     * This is given to you after you call getRequestToken() and should be saved
+     * by your application.
      * @var string
      */
     private $_request_token = null;
 
     /**
      * SmartFile Request Secret
-     * This is given to you after you call getRequestToken() and should be saved by your application.
+     * This is given to you after you call getRequestToken() and should be saved
+     * by your application.
      * @var string
      */
     private $_request_secret = null;
 
     /**
      * SmartFile Access Token
-     * This is given to you after you call getAccessToken() and should be saved by your application.
+     * This is given to you after you call getAccessToken() and should be saved
+     * by your application.
      * @var string
      */
     private $_access_token = null;
 
     /**
      * SmartFile Access Secret
-     * This is given to you after you call getAccessToken() and should be saved by your application.
+     * This is given to you after you call getAccessToken() and should be saved
+     * by your application.
      * @var string
      */
     private $_access_secret = null;
@@ -109,7 +113,8 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
      * nonce char list
      * @var string
      */
-    private $_nonce_chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    private $_nonce_chars
+        = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
     // }}}
 
@@ -119,19 +124,23 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
      * Private constructor. Set the oauth token and secret once
      * when you instantiate this class.
      *
-     * @param string $client_token  Client OAuth Token
-     * @param string $client_secret Client OAuth Secret
-     * @param string $client_token  OAuth Access Token
-     * @param string $client_secret OAuth Access Secret
+     * @param string $client_token   Client OAuth Token
+     * @param string $client_secret  Client OAuth Secret
+     * @param string $request_token  OAuth Access Token
+     * @param string $request_secret OAuth Access Secret
      *
      * @return null
      */
-    function __construct($client_token=null, $client_secret=null, $request_token=null, $reques_secret=null)
-    {
+    function __construct(
+        $client_token=null,
+        $client_secret=null,
+        $request_token=null,
+        $request_secret=null
+    ) {
         $this->_client_token = $client_token;
         $this->_client_secret = $client_secret;
         $this->_request_token = $request_token;
-        $this->_request_secret = $reques_secret;
+        $this->_request_secret = $request_secret;
     }
 
     // }}}
@@ -139,7 +148,7 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
     /**
      * Generate a random string of x chars
      *
-     * @param int $length  Length of resultant string
+     * @param int $length Length of resultant string
      *
      * @return string
      */
@@ -147,9 +156,8 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
     {
         $result = '';
         $cLength = strlen($this->_nonce_chars);
-        for ($i=0; $i < $length; $i++)
-        {
-            $rnum = rand(0,$cLength);
+        for ($i=0; $i < $length; $i++) {
+            $rnum = rand(0, $cLength);
             $result .= substr($this->_nonce_chars, $rnum, 1);
         }
         return $result;
@@ -169,9 +177,11 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
     public function doRequest($uri, $method, $data=null, $extra_headers='')
     {
         // Add the OAuth authentication information to the request
-        $auth = 'oauth_consumer_key="' . $this->_client_token . '",oauth_token="' . $this->_access_token .'",' .
-        'oauth_nonce="' . $this->_genNonce() . '",oauth_timestamp="' . time() . '",oauth_signature_method="PLAINTEXT",'.
-        'oauth_version="1.0",oauth_signature="' . $this->_client_secret . '&' .$this->_access_secret . '"';
+        $auth = 'oauth_consumer_key="' . $this->_client_token . '",oauth_token="' .
+            $this->_access_token .'",' . 'oauth_nonce="' . $this->_genNonce() .
+            '",oauth_timestamp="' . time() . '",oauth_signature_method="PLAINTEXT",'.
+            'oauth_version="1.0",oauth_signature="' . $this->_client_secret . '&' .
+            $this->_access_secret . '"';
         $extra_headers = $extra_headers . 'Authorization: OAuth ' . $auth . "\r\n";
 
         return parent::doRequest($uri, $method, $data, $extra_headers);
@@ -186,10 +196,11 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
      */
     public function getRequestToken($callback=null)
     {
-        if($this->_client_token == null || $this->_client_secret == null){
-            throw new Service_SmartFile_APIException('You must first set client token and client secret. ' .
-                                                     'Use "new Service_SmartFile_OAuthClient(token, secret)" ' .
-                                                     'first.');
+        if ($this->_client_token == null || $this->_client_secret == null) {
+            throw new Service_SmartFile_APIException(
+                'You must first set client token and client secret. ' .
+                'Use "new Service_SmartFile_OAuthClient(token, secret)" first.'
+            );
         }
         $uri = $this->oauth_base_url . '/oauth/request_token/';
         $data = array(
@@ -200,7 +211,7 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
             'oauth_signature_method' => 'PLAINTEXT',
             'oauth_signature' => $this->_client_secret . '&'
         );
-        if($callback){
+        if ($callback) {
             //push callback to beginning of array
             $data = array_merge(array('callback_uri' => $callback), $data);
         }
@@ -208,14 +219,17 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
         $sep = strpos($result, "\r\n\r\n");
         $headers = substr($result, 0, $sep);
         $result = substr($result, $sep + 4);
-        if(stristr($headers, 'Transfer-Encoding: chunked')){
-            $result = $this->_decodeChunked($result);
+        if (stristr($headers, 'Transfer-Encoding: chunked')) {
+            $result = $this->decodeChunked($result);
         }
         $result = trim($result);
         if ($result == 'Could not verify OAuth request.') {
-            throw new Service_SmartFile_APIException('Could not verify OAuth request.');
+            throw new Service_SmartFile_APIException(
+                'Could not verify OAuth request.'
+            );
         }
-        parse_str($result, $result); //convert returned string to array for easy access
+        //convert returned string to array for easy access
+        parse_str($result, $result);
         $this->_request_token = $result['oauth_token'];
         $this->_request_secret = $result['oauth_token_secret'];
         return $result;
@@ -223,25 +237,30 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
 
     /**
      * The second step of the OAuth workflow.
-     * Send the user to the URL obtained. They will authorize the application to access their account.
-     * They will be given a verifier if a callback is not specified.
+     * Send the user to the URL obtained. They will authorize the application to
+     * access their account.
+     * The user will be given a verifier if a callback is not specified.
      *
      * @return string
      */
     public function getAuthorizationUrl()
     {
-        if($this->_request_token == null){
-            throw new Service_SmartFile_APIException('You must obtain a request token to request ' .
-                                                     'and access token. Use get_request_token() ' .
-                                                     'first.');
+        if ($this->_request_token == null) {
+            throw new Service_SmartFile_APIException(
+                'You must obtain a request token to request ' .
+                'and access token. Use get_request_token() first.'
+            );
         }
 
-        return $this->oauth_base_url . '/oauth/authorize/?oauth_token=' . urlencode($this->_request_token);
+        return $this->oauth_base_url . '/oauth/authorize/?oauth_token=' .
+            urlencode($this->_request_token);
     }
 
     /**
      * The final step of the OAuth workflow. After this the client can make
      * API calls.
+     *
+     * @param string $verifier Verifier given to user or passed to your callback.
      *
      * @return array
      */
@@ -256,17 +275,19 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
             'oauth_signature_method' => 'PLAINTEXT',
             'oauth_consumer_key' => $this->_client_token,
             'oauth_token' => $this->_request_token,
-            'oauth_signature' => $this->_client_secret . '%26' .$this->_request_secret
+            'oauth_signature' => $this->_client_secret . '%26' .
+                $this->_request_secret
         );
         $result = parent::doRequest($uri, 'post', $data, '');
         $sep = strpos($result, "\r\n\r\n");
         $headers = substr($result, 0, $sep);
         $result = substr($result, $sep + 4);
-        if(stristr($headers, 'Transfer-Encoding: chunked')){
-            $result = $this->_decodeChunked($result);
+        if (stristr($headers, 'Transfer-Encoding: chunked')) {
+            $result = $this->decodeChunked($result);
         }
         $result = trim($result);
-        parse_str($result, $result); //convert returned string to array for easy access
+        //convert returned string to array for easy access
+        parse_str($result, $result);
         $this->_access_token = $result['oauth_token'];
         $this->_access_secret = $result['oauth_token_secret'];
         return $result;
