@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \Service_SmartFile_Client</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/SmartFile.html"><i class="icon-folder-open"></i> SmartFile</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">5</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_delete" title="delete :: Public wrapper for DELETE requests"><span class="description">Public wrapper for DELETE requests</span><pre>delete()</pre></a></li>
+<li class="method public "><a href="#method_get" title="get :: Public wrapper for GET requests"><span class="description">Public wrapper for GET requests</span><pre>get()</pre></a></li>
+<li class="method public "><a href="#method_post" title="post :: Public wrapper for POST requests"><span class="description">Public wrapper for POST requests</span><pre>post()</pre></a></li>
+<li class="method public "><a href="#method_put" title="put :: Public wrapper for PUT requests"><span class="description">Public wrapper for PUT requests</span><pre>put()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method_decodeChunked" title="decodeChunked :: This function decodes a chunked http response"><span class="description">This function decodes a chunked http response</span><pre>decodeChunked()</pre></a></li>
+<li class="method protected "><a href="#method_doRequest" title="doRequest :: This function performs an HTTP request and parses the response."><span class="description">This function performs an HTTP request and parses the response.</span><pre>doRequest()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="method private "><a href="#method__request" title="_request :: Handles retrying failed requests and error handling."><span class="description">Handles retrying failed requests and error handling.</span><pre>_request()</pre></a></li></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul><li class="property public "><a href="#property_api_base_url" title="$api_base_url :: Smartfile API URL."><span class="description"></span><pre>$api_base_url</pre></a></li></ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\Service_SmartFile_Client"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Service_SmartFile_Client.html">Service_SmartFile_Client</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Base API client, handles communication, retry, versioning etc.</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>category</th>
+<td>Web_Services</td>
+</tr>
+<tr>
+<th>package</th>
+<td><a href="../packages/SmartFile.Client.html">SmartFile_Client</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:github@shopandlearn.net">Ryan Johnston</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>2012 SmartFile</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="">See LICENSE file</a></td>
+</tr>
+<tr>
+<th>link</th>
+<td><a href="http://pear.php.net/package/SmartFile">http://pear.php.net/package/SmartFile</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_delete"></a><div class="element clickable method public method_delete" data-toggle="collapse" data-target=".method_delete .collapse">
+<h2>Public wrapper for DELETE requests</h2>
+<pre>delete(string $endpoint, array $data) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$endpoint</h4>
+<code>string</code><p>URI of endpoint</p></div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code><p>DELETE data</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_get"></a><div class="element clickable method public method_get" data-toggle="collapse" data-target=".method_get .collapse">
+<h2>Public wrapper for GET requests</h2>
+<pre>get(string $endpoint, array $data) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$endpoint</h4>
+<code>string</code><p>URI of endpoint</p></div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code><p>Get params</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_post"></a><div class="element clickable method public method_post" data-toggle="collapse" data-target=".method_post .collapse">
+<h2>Public wrapper for POST requests</h2>
+<pre>post(string $endpoint, array $data) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$endpoint</h4>
+<code>string</code><p>URI of endpoint</p></div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code><p>POST data</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_put"></a><div class="element clickable method public method_put" data-toggle="collapse" data-target=".method_put .collapse">
+<h2>Public wrapper for PUT requests</h2>
+<pre>put(string $endpoint, array $data) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$endpoint</h4>
+<code>string</code><p>URI of endpoint</p></div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code><p>PUT data</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_decodeChunked"></a><div class="element clickable method protected method_decodeChunked" data-toggle="collapse" data-target=".method_decodeChunked .collapse">
+<h2>This function decodes a chunked http response</h2>
+<pre>decodeChunked(string $str) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$str</h4>
+<code>string</code><p>Http Response to decode</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_doRequest"></a><div class="element clickable method protected method_doRequest" data-toggle="collapse" data-target=".method_doRequest .collapse">
+<h2>This function performs an HTTP request and parses the response.</h2>
+<pre>doRequest(string $uri, string $method, array $data, string $extra_headers) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>It raises an exception if the server cannot be contacted or if
+the server returns a status other than 201. Any status other
+that 201 results in the exception receiving the HTTP status in
+addition to the returned error message.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$uri</h4>
+<code>string</code><p>Url of the Request</p></div>
+<div class="subelement argument">
+<h4>$method</h4>
+<code>string</code><p>Http Method</p></div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code><p>Http Parameters</p></div>
+<div class="subelement argument">
+<h4>$extra_headers</h4>
+<code>string</code><p>Extra Headers Such as Authentication Information</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method__request"></a><div class="element clickable method private method__request" data-toggle="collapse" data-target=".method__request .collapse">
+<h2>Handles retrying failed requests and error handling.</h2>
+<pre>_request(string $uri, string $method, array $data) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$uri</h4>
+<code>string</code><p>URI of endpoint</p></div>
+<div class="subelement argument">
+<h4>$method</h4>
+<code>string</code><p>HTTP method</p></div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code><p>HTTP request data</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_api_base_url"> </a><div class="element clickable property public property_api_base_url" data-toggle="collapse" data-target=".property_api_base_url .collapse">
+<h2></h2>
+<pre>$api_base_url : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-06-18T16:34:23-04:00.<br></footer></div>
+</div>
+</body>
+</html>

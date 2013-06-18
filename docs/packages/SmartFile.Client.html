@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>phpDocumentor » SmartFile</title>
+<title>phpDocumentor » SmartFile\Client</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -57,124 +57,19 @@
 <li class="nav-header">
 <i class="icon-map-marker"></i> Packages</li>
 <li>
-<a href="../packages/SmartFile.html" title="SmartFile"><i class="icon-folder-open"></i>SmartFile</a><ul class="nav nav-list nav-packages"><li>
 <a href="../packages/SmartFile.Client.html" title="Client"><i class="icon-folder-open"></i>Client</a><ul class="nav nav-list nav-packages"></ul>
-</li></ul>
 </li>
 <li class="nav-header">
-<i class="icon-custom icon-function"></i> Functions</li>
-<li class="function  "><a href="#function_createUser" title="createUser :: This function makes the User add API call."><span class="description">This function makes the User add API call.</span><pre>createUser</pre></a></li>
-<li class="function  "><a href="#function_deleteUser" title="deleteUser :: This function makes the User delete API call."><span class="description">This function makes the User delete API call.</span><pre>deleteUser</pre></a></li>
-<li class="nav-header">
 <i class="icon-custom icon-class"></i> Classes</li>
-<li><a href="#Services_SmartFile" title="SmartFile PHP SDK">Services_SmartFile</a></li>
-<li class="nav-header">
-<i class="icon-custom icon-constant"></i> Constants</li>
-<li class="constant  "><a href="#constant_API_KEY" title="API_KEY :: "><span class="description">API_KEY</span><pre>API_KEY</pre></a></li>
-<li class="constant  "><a href="#constant_API_KEY" title="API_KEY :: "><span class="description">API_KEY</span><pre>API_KEY</pre></a></li>
-<li class="constant  "><a href="#constant_API_PWD" title="API_PWD :: "><span class="description">API_PWD</span><pre>API_PWD</pre></a></li>
-<li class="constant  "><a href="#constant_API_PWD" title="API_PWD :: "><span class="description">API_PWD</span><pre>API_PWD</pre></a></li>
-<li class="constant  "><a href="#constant_OAUTH_SECRET" title="OAUTH_SECRET :: "><span class="description">OAUTH_SECRET</span><pre>OAUTH_SECRET</pre></a></li>
-<li class="constant  "><a href="#constant_OAUTH_TOKEN" title="OAUTH_TOKEN :: "><span class="description">OAUTH_TOKEN</span><pre>OAUTH_TOKEN</pre></a></li>
+<li><a href="#Service_SmartFile_Client" title="Base API client, handles communication, retry, versioning etc.">Service_SmartFile_Client</a></li>
+<li><a href="#Service_SmartFile_BasicClient" title="Basic Authentication API client, handles communication, retry, versioning etc.">Service_SmartFile_BasicClient</a></li>
+<li><a href="#Service_SmartFile_APIException" title="SmartFile API base exception">Service_SmartFile_APIException</a></li>
+<li><a href="#Service_SmartFile_RequestException" title="Exception for issues regarding a request.">Service_SmartFile_RequestException</a></li>
+<li><a href="#Service_SmartFile_ResponseException" title="Exception for issues regarding a response.">Service_SmartFile_ResponseException</a></li>
+<li><a href="#Service_SmartFile_OAuthClient" title="API client that uses OAuth tokens.">Service_SmartFile_OAuthClient</a></li>
 </ul>
 </div>
 <div class="span8 package-contents">
-<ul class="breadcrumb"><li>
-<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li class="active"><a href="../packages/SmartFile.html">SmartFile</a></li>
-</li></ul>
-<div class="package-indent">
-<h3>
-<i class="icon-custom icon-function"></i> Functions</h3>
-<a id="function_createUser"></a><div class="element clickable function  function_createUser" data-toggle="collapse" data-target=".function_createUser .collapse">
-<h2>This function makes the User add API call.</h2>
-<pre>createUser(string $fullname, string $username, string $password, string $email) : null</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>It uses the BasicClient
-class to handle the transport. Additional API calls could be supported
-simply by writing additional wrappers that create the $data array and
-use BasicClient to do the grunt work.</p></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$fullname</h4>
-<code>string</code><p>User Full Name</p></div>
-<div class="subelement argument">
-<h4>$username</h4>
-<code>string</code><p>User Login</p></div>
-<div class="subelement argument">
-<h4>$password</h4>
-<code>string</code><p>User password</p></div>
-<div class="subelement argument">
-<h4>$email</h4>
-<code>string</code><p>User Email</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>null</code></div>
-</div></div>
-</div>
-<a id="function_deleteUser"></a><div class="element clickable function  function_deleteUser" data-toggle="collapse" data-target=".function_deleteUser .collapse">
-<h2>This function makes the User delete API call.</h2>
-<pre>deleteUser(string $username) : null</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>It uses the BasicClient
-class to handle the transport. Additional API calls could be supported
-simply by writing additional wrappers that create the $data array and
-use BasicClient to do the grunt work.</p></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$username</h4>
-<code>string</code><p>User Login</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>null</code></div>
-</div></div>
-</div>
-<h3>
-<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
-<div id="Services_SmartFile" class="element ajax clickable class">
-<h1>Services_SmartFile<a href="../classes/Services_SmartFile.html">¶</a>
-</h1>
-<p class="short_description">SmartFile PHP SDK</p>
-<div class="details collapse"></div>
-<a href="../classes/Services_SmartFile.html" class="more">« More »</a>
-</div>
-<h3>
-<i class="icon-custom icon-constant"></i> Constants</h3>
-<a id="constant_API_KEY"> </a><div class="element clickable constant  constant_API_KEY" data-toggle="collapse" data-target=".constant_API_KEY .collapse">
-<h2>API_KEY</h2>
-<pre>API_KEY </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="constant_API_KEY"> </a><div class="element clickable constant  constant_API_KEY" data-toggle="collapse" data-target=".constant_API_KEY .collapse">
-<h2>API_KEY</h2>
-<pre>API_KEY </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="constant_API_PWD"> </a><div class="element clickable constant  constant_API_PWD" data-toggle="collapse" data-target=".constant_API_PWD .collapse">
-<h2>API_PWD</h2>
-<pre>API_PWD </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="constant_API_PWD"> </a><div class="element clickable constant  constant_API_PWD" data-toggle="collapse" data-target=".constant_API_PWD .collapse">
-<h2>API_PWD</h2>
-<pre>API_PWD </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="constant_OAUTH_SECRET"> </a><div class="element clickable constant  constant_OAUTH_SECRET" data-toggle="collapse" data-target=".constant_OAUTH_SECRET .collapse">
-<h2>OAUTH_SECRET</h2>
-<pre>OAUTH_SECRET </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="constant_OAUTH_TOKEN"> </a><div class="element clickable constant  constant_OAUTH_TOKEN" data-toggle="collapse" data-target=".constant_OAUTH_TOKEN .collapse">
-<h2>OAUTH_TOKEN</h2>
-<pre>OAUTH_TOKEN </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
 <ul class="breadcrumb"><li>
 <a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li><a href="../packages/SmartFile.html">SmartFile</a></li>
 <li class="active">
@@ -225,7 +120,6 @@ use BasicClient to do the grunt work.</p></div>
 <p class="short_description">Exception for issues regarding a response.</p>
 <div class="details collapse"></div>
 <a href="../classes/Service_SmartFile_ResponseException.html" class="more">« More »</a>
-</div>
 </div>
 </div>
 </div>

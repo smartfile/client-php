@@ -18,7 +18,11 @@
 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
 <li class="dropdown">
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
-                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu"></ul>
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/SmartFile.html"><i class="icon-folder-open"></i> SmartFile</a></li>
+</ul>
 </li>
 <li class="dropdown" id="charts-menu">
 <a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
@@ -28,7 +32,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">0</span></a></li>
+                <span class="label label-info">5</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -72,10 +76,10 @@
 <pre>createUser(string $fullname, string $username, string $password, string $email) : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>It uses the http_request
-function to handle the transport. Additional API calls could be supported
+<div class="long_description"><p>It uses the BasicClient
+class to handle the transport. Additional API calls could be supported
 simply by writing additional wrappers that create the $data array and
-use http_request to do the grunt work.</p></div>
+use BasicClient to do the grunt work.</p></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$fullname</h4>
@@ -98,37 +102,14 @@ use http_request to do the grunt work.</p></div>
 <pre>deleteUser(string $username) : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>It uses the http_request
-function to handle the transport. Additional API calls could be supported
+<div class="long_description"><p>It uses the BasicClient
+class to handle the transport. Additional API calls could be supported
 simply by writing additional wrappers that create the $data array and
-use http_request to do the grunt work.</p></div>
+use BasicClient to do the grunt work.</p></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$username</h4>
 <code>string</code><p>User Login</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>null</code></div>
-</div></div>
-</div>
-<a id="function_httpRequest"></a><div class="element clickable function  function_httpRequest" data-toggle="collapse" data-target=".function_httpRequest .collapse">
-<h2>This function performs an HTTP request and parses the response.</h2>
-<pre>httpRequest(string $uri, string $method, array $data) : null</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>It raises an exception if the server cannot be contacted or if
-the server returns a status other than 201. Any status other
-that 201 results in the exception receiving the HTTP status in
-addition to the returned error message.</p></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$uri</h4>
-<code>string</code><p>Url of the Request</p></div>
-<div class="subelement argument">
-<h4>$method</h4>
-<code>string</code><p>Http Method</p></div>
-<div class="subelement argument">
-<h4>$data</h4>
-<code>array</code><p>Http Parameters</p></div>
 <h3>Returns</h3>
 <div class="subelement response"><code>null</code></div>
 </div></div>
@@ -159,7 +140,85 @@ response.</h2>
 </div></div>
 </div>
 <h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="BasicClientTest" class="element ajax clickable class">
+<h1>BasicClientTest<a href="../classes/BasicClientTest.html">¶</a>
+</h1>
+<p class="short_description">Test class for Services_SmartFile_BasicClient</p>
+<div class="details collapse"></div>
+<a href="../classes/BasicClientTest.html" class="more">« More »</a>
+</div>
+<div id="ClientTest" class="element ajax clickable class">
+<h1>ClientTest<a href="../classes/ClientTest.html">¶</a>
+</h1>
+<p class="short_description">Test class for Services_SmartFile_Client</p>
+<div class="details collapse"></div>
+<a href="../classes/ClientTest.html" class="more">« More »</a>
+</div>
+<div id="OAuthClientTest" class="element ajax clickable class">
+<h1>OAuthClientTest<a href="../classes/OAuthClientTest.html">¶</a>
+</h1>
+<p class="short_description">Test class for Services_SmartFile_OAuthClient</p>
+<div class="details collapse"></div>
+<a href="../classes/OAuthClientTest.html" class="more">« More »</a>
+</div>
+<div id="Service_SmartFile_APIException" class="element ajax clickable class">
+<h1>Service_SmartFile_APIException<a href="../classes/Service_SmartFile_APIException.html">¶</a>
+</h1>
+<p class="short_description">SmartFile API base exception</p>
+<div class="details collapse"></div>
+<a href="../classes/Service_SmartFile_APIException.html" class="more">« More »</a>
+</div>
+<div id="Service_SmartFile_BasicClient" class="element ajax clickable class">
+<h1>Service_SmartFile_BasicClient<a href="../classes/Service_SmartFile_BasicClient.html">¶</a>
+</h1>
+<p class="short_description">Basic Authentication API client, handles communication, retry, versioning etc.</p>
+<div class="details collapse"></div>
+<a href="../classes/Service_SmartFile_BasicClient.html" class="more">« More »</a>
+</div>
+<div id="Service_SmartFile_Client" class="element ajax clickable class">
+<h1>Service_SmartFile_Client<a href="../classes/Service_SmartFile_Client.html">¶</a>
+</h1>
+<p class="short_description">Base API client, handles communication, retry, versioning etc.</p>
+<div class="details collapse"></div>
+<a href="../classes/Service_SmartFile_Client.html" class="more">« More »</a>
+</div>
+<div id="Service_SmartFile_OAuthClient" class="element ajax clickable class">
+<h1>Service_SmartFile_OAuthClient<a href="../classes/Service_SmartFile_OAuthClient.html">¶</a>
+</h1>
+<p class="short_description">API client that uses OAuth tokens.</p>
+<div class="details collapse"></div>
+<a href="../classes/Service_SmartFile_OAuthClient.html" class="more">« More »</a>
+</div>
+<div id="Service_SmartFile_RequestException" class="element ajax clickable class">
+<h1>Service_SmartFile_RequestException<a href="../classes/Service_SmartFile_RequestException.html">¶</a>
+</h1>
+<p class="short_description">Exception for issues regarding a request.</p>
+<div class="details collapse"></div>
+<a href="../classes/Service_SmartFile_RequestException.html" class="more">« More »</a>
+</div>
+<div id="Service_SmartFile_ResponseException" class="element ajax clickable class">
+<h1>Service_SmartFile_ResponseException<a href="../classes/Service_SmartFile_ResponseException.html">¶</a>
+</h1>
+<p class="short_description">Exception for issues regarding a response.</p>
+<div class="details collapse"></div>
+<a href="../classes/Service_SmartFile_ResponseException.html" class="more">« More »</a>
+</div>
+<div id="Services_SmartFile" class="element ajax clickable class">
+<h1>Services_SmartFile<a href="../classes/Services_SmartFile.html">¶</a>
+</h1>
+<p class="short_description">SmartFile PHP SDK</p>
+<div class="details collapse"></div>
+<a href="../classes/Services_SmartFile.html" class="more">« More »</a>
+</div>
+<h3>
 <i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_API_KEY"> </a><div class="element clickable constant  constant_API_KEY" data-toggle="collapse" data-target=".constant_API_KEY .collapse">
+<h2>API_KEY</h2>
+<pre>API_KEY </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
 <a id="constant_API_KEY"> </a><div class="element clickable constant  constant_API_KEY" data-toggle="collapse" data-target=".constant_API_KEY .collapse">
 <h2>API_KEY</h2>
 <pre>API_KEY </pre>
@@ -172,9 +231,21 @@ response.</h2>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
-<a id="constant_API_URL"> </a><div class="element clickable constant  constant_API_URL" data-toggle="collapse" data-target=".constant_API_URL .collapse">
-<h2>API_URL</h2>
-<pre>API_URL </pre>
+<a id="constant_API_PWD"> </a><div class="element clickable constant  constant_API_PWD" data-toggle="collapse" data-target=".constant_API_PWD .collapse">
+<h2>API_PWD</h2>
+<pre>API_PWD </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_OAUTH_SECRET"> </a><div class="element clickable constant  constant_OAUTH_SECRET" data-toggle="collapse" data-target=".constant_OAUTH_SECRET .collapse">
+<h2>OAUTH_SECRET</h2>
+<pre>OAUTH_SECRET </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_OAUTH_TOKEN"> </a><div class="element clickable constant  constant_OAUTH_TOKEN" data-toggle="collapse" data-target=".constant_OAUTH_TOKEN .collapse">
+<h2>OAUTH_TOKEN</h2>
+<pre>OAUTH_TOKEN </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -184,7 +255,7 @@ response.</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-06-04T16:13:43-04:00.<br></footer></div>
+            generated on 2013-06-18T16:34:23-04:00.<br></footer></div>
 </div>
 </body>
 </html>
