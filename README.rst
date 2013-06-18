@@ -61,6 +61,8 @@ OAuth Authentication
 
 Authentication using OAuth authentication is bit more complicated, as it involves tokens and secrets.
 
+sample PHP code::
+
     include_once 'Services/SmartFile/OAuthClient.php';
     $api = new Service_SmartFile_OAuthClient('**********', '**********');
     // Be sure to only call each method once for each OAuth login
