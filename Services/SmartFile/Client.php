@@ -70,7 +70,7 @@ class Service_SmartFile_Client
      *
      * @return string
      */
-    private function _decodeChunked($str)
+    protected function _decodeChunked($str)
     {
         for ($res = ''; !empty($str); $str = trim($str)) {
             $pos = strpos($str, "\r\n");
@@ -127,7 +127,7 @@ class Service_SmartFile_Client
             );
         }
         fputs(
-            $fp,  $method . ' ' . $url_parts['path'] . " HTTP/1.1\r\n" .
+            $fp,  strtoupper($method) . ' ' . $url_parts['path'] . " HTTP/1.1\r\n" .
             'Host: ' . $host_header . "\r\n" .
             "User-Agent: SmartFile PHP API client v2.1\r\n" .
             "Content-Type: application/x-www-form-urlencoded\r\n" .
@@ -141,7 +141,6 @@ class Service_SmartFile_Client
         while ($line = fread($fp, 4096)) {
             $response .= $line;
         }
-
         fclose($fp);
         return $response;
     }
@@ -161,12 +160,15 @@ class Service_SmartFile_Client
 
         // strip the HTTP headers:
         $sep = strpos($response, "\r\n");
-        $http_status = substr($response, 0, $sep);
-        list($ignored, $http_status, $ignored) = split(' ', $http_status);
+        $headers = substr($response, 0, $sep);
+        list($ignored, $http_status, $ignored) = split(' ', $headers);
         $method = strtolower($method);
         $sep = strpos($response, "\r\n\r\n");
         $response = substr($response, $sep + 4);
-        $response = trim($this->_decodeChunked($response));
+        if(stristr($headers, 'Transfer-Encoding: chunked')){
+            $response = $this->_decodeChunked($response);
+        }
+        $response = trim($response);
         if (($method == 'get' && $http_status != 200)
             || ($method == 'post' && $http_status != 201)
             || ($method == 'put' && $http_status != 200)

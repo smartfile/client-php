@@ -103,7 +103,7 @@ class Service_SmartFile_ResponseException extends Service_SmartFile_APIException
         }
         if ($catchelse) {
             //try...catch...else
-            if (array_key_exists('field_errors', $json)) {
+            if (is_array($json) && array_key_exists('field_errors', $json)) {
                 if (is_array($json['field_errors'])) {
                     $message = json_encode($json);
                 } else {

@@ -1,12 +1,46 @@
 <?php
 
 require_once '../Services/SmartFile/OAuthClient.php';
+require_once '../Services/SmartFile/Exception.php';
 
 /**
  * Test class for Services_SmartFile_OAuthClient
  */
 class OAuthClientTest extends PHPUnit_Framework_TestCase
 {
+
+
+// {{{ private properties
+
+    /**
+     * SmartFile Client Token
+     * You get it when you register your application.
+     * This must be set for tests to pass properly.
+     * @var string
+     */
+    private $_client_token = 'client_token';
+
+    /**
+     * SmartFile Client Secret
+     * You get it when you register your application.
+     * This must be set for tests to pass properly.
+     * @var string
+     */
+    private $_client_secret = 'client_secret';
+
+    // }}}
+
+    /**
+     * Test the get request token endpoint.
+     *
+     * @return null
+     */
+    public function testBadInit()
+    {
+        $test = new Service_SmartFile_OAuthClient();
+        $this->setExpectedException('Service_SmartFile_APIException');
+        $result = $test->getRequestToken();
+    }
 
     /**
      * Test the get request token endpoint.
@@ -15,9 +49,10 @@ class OAuthClientTest extends PHPUnit_Framework_TestCase
      */
     public function testTokenRequest()
     {
-        $test = new Service_SmartFile_OAuthClient('todo', 'todo');
+        $test = new Service_SmartFile_OAuthClient($this->_client_token, $this->_client_secret);
         $result = $test->getRequestToken();
-        $this->assertTrue(true); // @TODO
+        $this->assertArrayHasKey('oauth_token', $result, 'oauth_token not found in result');
+        $this->assertArrayHasKey('oauth_token_secret', $result, 'oauth_token_secret not found in result');
     }
 
     /**
@@ -28,10 +63,35 @@ class OAuthClientTest extends PHPUnit_Framework_TestCase
     public function testBadTokenRequest()
     {
         $test = new Service_SmartFile_OAuthClient('bad_data', 'bad_secret');
+        $this->setExpectedException('Service_SmartFile_APIException');
         $result = $test->getRequestToken();
-        $this->assertTrue($result == 'Could not verify OAuth request.');
     }
 
+    /**
+     * Test the get request token endpoint.
+     *
+     * @return null
+     */
+    public function testAuthorizationUrl()
+    {
+        $test = new Service_SmartFile_OAuthClient($this->_client_token, $this->_client_secret);
+        $test->getRequestToken();
+        $result = $test->getAuthorizationUrl();
+        $this->assertStringStartsWith('http', $result, 'Authorization Url should return a string');
+    }
+
+    /**
+     * Test the get authorization url without first getting request token.
+     *
+     * @return null
+     */
+    public function testAuthorizationUrlNoToken()
+    {
+        $test = new Service_SmartFile_OAuthClient($this->_client_token, $this->_client_secret);
+        $this->setExpectedException('Service_SmartFile_APIException');
+        $result = $test->getAuthorizationUrl();
+
+    }
 
 }
 ?>

@@ -37,21 +37,30 @@
  * @since     File available since Release 2.1
  */
 
-require_once '../Services/SmartFile/BasicClient.php';
+require_once '../Services/SmartFile/OAuthClient.php';
 
 // {{{ constants
 
 /**
  * These constants are needed to access the API.
+ * You get these when you register your application at /oauth/register/
  */
-define("API_KEY", "api_key");
-define("API_PWD", "api_pass");
+define("OAUTH_TOKEN", "oauth_token");
+define("OAUTH_SECRET", "oauth_secret");
 
 // }}}
 
 // a quick test
-$client = new Service_SmartFile_BasicClient(API_KEY, API_PWD);
-$client->api_base_url= 'https://yoursite.smartfile.com/api/2';
+$client = new Service_SmartFile_OAuthClient(OAUTH_TOKEN, OAUTH_SECRET);
+$client->oauth_base_url= 'http://localhost:8000';
+$client->api_base_url= $client->oauth_base_url . '/api/2';
+$client->getRequestToken();
+echo $client->getAuthorizationUrl() . "\n";
+echo 'Enter verifier: ';
+$verifier = trim(fgets(STDIN));
+$result = $client->getAccessToken($verifier);
+
 $response = $client->get('/whoami/', null);
-echo $response;
+var_dump($response);
+
 ?>
