@@ -71,7 +71,7 @@ sample PHP code::
     $api->getRequestToken();
 
     // Redirect users to the following URL:
-    echo "In your browser, go to: " + $api->getAuthorizationUrl() . "\n";
+    echo "In your browser, go to: " . $api->getAuthorizationUrl() . "\n";
     // This example uses raw_input to get the verification from the console:
     $clientVerification = trim(fgets(STDIN));
     $api.getAccessToken($clientVerification);
