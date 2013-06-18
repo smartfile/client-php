@@ -52,7 +52,7 @@ define("OAUTH_SECRET", "oauth_secret");
 
 // a quick test
 $client = new Service_SmartFile_OAuthClient(OAUTH_TOKEN, OAUTH_SECRET);
-$client->oauth_base_url= 'http://localhost:8000';
+$client->oauth_base_url= 'https://yoursite.smartfile.com';
 $client->api_base_url= $client->oauth_base_url . '/api/2';
 $client->getRequestToken();
 echo $client->getAuthorizationUrl() . "\n";

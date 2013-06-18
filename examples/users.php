@@ -44,7 +44,6 @@ require_once '../Services/SmartFile/BasicClient.php';
 /**
  * These constants are needed to access the API.
  */
-define("API_URL", "http://app.smartfile.com/api/1");
 define("API_KEY", "api-key");
 define("API_PWD", "api-pass");
 
