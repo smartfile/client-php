@@ -49,7 +49,7 @@ Some of the details this library takes care of are:
 Basic Authentication
 --------------------
 
- .. code:: php
+sample PHP code::
 
        include_once 'Services/SmartFile/BasicClient.php';
        $api = new Service_SmartFile_BasicClient('**********', '**********');
