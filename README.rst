@@ -61,7 +61,19 @@ OAuth Authentication
 
 Authentication using OAuth authentication is bit more complicated, as it involves tokens and secrets.
 
+    include_once 'Services/SmartFile/OAuthClient.php';
+    $api = new Service_SmartFile_OAuthClient('**********', '**********');
+    // Be sure to only call each method once for each OAuth login
+     
+    // This is the first step with the client, which should be left alone
+    $api->getRequestToken();
 
+    // Redirect users to the following URL:
+    echo "In your browser, go to: " + $api->getAuthorizationUrl() . "\n";
+    // This example uses raw_input to get the verification from the console:
+    $clientVerification = trim(fgets(STDIN));
+    $api.getAccessToken($clientVerification);
+    $api.get('/ping');
 
 Calling endpoints
 -----------------
