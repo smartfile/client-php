@@ -62,6 +62,27 @@ class Service_SmartFile_Client
 
     // }}}
 
+    /**
+     * This function checks for chunked http response
+     * and returns body of response.
+     *
+     * @param string $response Http Response to split
+     *
+     * @return string
+     */
+    protected function getBody($response)
+    {
+        // strip the HTTP headers:
+        $sep = strpos($response, "\r\n\r\n");
+        $headers = substr($response, 0, $sep);
+        $sep = strpos($response, "\r\n\r\n");
+        $response = substr($response, $sep + 4);
+        if (stristr($headers, 'Transfer-Encoding: chunked')) {
+            $response = $this->decodeChunked($response);
+        }
+        $response = trim($response);
+        return $response;
+    }
 
     /**
      * This function decodes a chunked http response
@@ -132,7 +153,8 @@ class Service_SmartFile_Client
             "User-Agent: SmartFile PHP API client v2.1\r\n" .
             "Content-Type: application/x-www-form-urlencoded\r\n" .
             'Content-Length: ' . strlen($data) . "\r\n" .
-            $extra_headers . "\r\n"
+            $extra_headers .
+            "Connection: close\r\n\r\n"
         );
         if (strtolower($method) == 'post') {
             fputs($fp, $data);
@@ -158,17 +180,14 @@ class Service_SmartFile_Client
     {
         $response = $this->doRequest($uri, $method, $data);
 
-        // strip the HTTP headers:
+        // Get Status from headers:
         $sep = strpos($response, "\r\n");
         $headers = substr($response, 0, $sep);
         list($ignored, $http_status, $ignored) = split(' ', $headers);
+
+        $response = $this->getBody($response);
+
         $method = strtolower($method);
-        $sep = strpos($response, "\r\n\r\n");
-        $response = substr($response, $sep + 4);
-        if (stristr($headers, 'Transfer-Encoding: chunked')) {
-            $response = $this->decodeChunked($response);
-        }
-        $response = trim($response);
         if (($method == 'get' && $http_status != 200)
             || ($method == 'post' && $http_status != 201)
             || ($method == 'put' && $http_status != 200)

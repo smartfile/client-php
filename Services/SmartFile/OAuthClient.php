@@ -216,18 +216,13 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
             $data = array_merge(array('callback_uri' => $callback), $data);
         }
         $result = parent::doRequest($uri, 'post', $data, '');
-        $sep = strpos($result, "\r\n\r\n");
-        $headers = substr($result, 0, $sep);
-        $result = substr($result, $sep + 4);
-        if (stristr($headers, 'Transfer-Encoding: chunked')) {
-            $result = $this->decodeChunked($result);
-        }
-        $result = trim($result);
+        $result = $this->getBody($result);
         if ($result == 'Could not verify OAuth request.') {
             throw new Service_SmartFile_APIException(
                 'Could not verify OAuth request.'
             );
         }
+
         //convert returned string to array for easy access
         parse_str($result, $result);
         $this->_request_token = $result['oauth_token'];
@@ -279,13 +274,7 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
                 $this->_request_secret
         );
         $result = parent::doRequest($uri, 'post', $data, '');
-        $sep = strpos($result, "\r\n\r\n");
-        $headers = substr($result, 0, $sep);
-        $result = substr($result, $sep + 4);
-        if (stristr($headers, 'Transfer-Encoding: chunked')) {
-            $result = $this->decodeChunked($result);
-        }
-        $result = trim($result);
+        $result = $this->getBody($result);
         //convert returned string to array for easy access
         parse_str($result, $result);
         $this->_access_token = $result['oauth_token'];
