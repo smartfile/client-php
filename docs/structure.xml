@@ -1,0 +1,1298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2.0.0a12" title="">
+  <file path="tests/OAuthClientTest.php" hash="cd965723c457beae28c25c0173c8ea26" package="Default">
+    <include line="3" type="Require Once" package="Default">
+      <name>../Services/SmartFile/OAuthClient.php</name>
+    </include>
+    <include line="4" type="Require Once" package="Default">
+      <name>../Services/SmartFile/Exception.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="global" line="9" package="Default">
+      <extends>\PHPUnit_Framework_TestCase</extends>
+      <name>OAuthClientTest</name>
+      <full_name>\OAuthClientTest</full_name>
+      <docblock line="6">
+        <description>Test class for Services_SmartFile_OAuthClient</description>
+        <long-description></long-description>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="21" namespace="global" package="Default">
+        <name>$_client_token</name>
+        <default>'client_token'</default>
+        <docblock line="15">
+          <description>SmartFile Client Token
+You get it when you register your application.</description>
+          <long-description>&lt;p&gt;This must be set for tests to pass properly.&lt;/p&gt;</long-description>
+          <tag line="15" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="29" namespace="global" package="Default">
+        <name>$_client_secret</name>
+        <default>'client_secret'</default>
+        <docblock line="23">
+          <description>SmartFile Client Secret
+You get it when you register your application.</description>
+          <long-description>&lt;p&gt;This must be set for tests to pass properly.&lt;/p&gt;</long-description>
+          <tag line="23" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="38" package="Default">
+        <name>testBadInit</name>
+        <full_name>testBadInit</full_name>
+        <docblock line="33">
+          <description>Test the get request token endpoint.</description>
+          <long-description></long-description>
+          <tag line="33" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="50" package="Default">
+        <name>testTokenRequest</name>
+        <full_name>testTokenRequest</full_name>
+        <docblock line="45">
+          <description>Test the get request token endpoint.</description>
+          <long-description></long-description>
+          <tag line="45" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="63" package="Default">
+        <name>testBadTokenRequest</name>
+        <full_name>testBadTokenRequest</full_name>
+        <docblock line="58">
+          <description>Test the get request token endpoint with bad token/secret.</description>
+          <long-description></long-description>
+          <tag line="58" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="75" package="Default">
+        <name>testAuthorizationUrl</name>
+        <full_name>testAuthorizationUrl</full_name>
+        <docblock line="70">
+          <description>Test the get request token endpoint.</description>
+          <long-description></long-description>
+          <tag line="70" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="88" package="Default">
+        <name>testAuthorizationUrlNoToken</name>
+        <full_name>testAuthorizationUrlNoToken</full_name>
+        <docblock line="83">
+          <description>Test the get authorization url without first getting request token.</description>
+          <long-description></long-description>
+          <tag line="83" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file tests/OAuthClientTest.php</error>
+    </parse_markers>
+  </file>
+  <file path="tests/ClientTest.php" hash="c0d906d3bfb0f5ccac3c0f4e79857d38" package="Default">
+    <include line="3" type="Require Once" package="Default">
+      <name>../Services/SmartFile/Client.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="global" line="8" package="Default">
+      <extends>\PHPUnit_Framework_TestCase</extends>
+      <name>ClientTest</name>
+      <full_name>\ClientTest</full_name>
+      <docblock line="5">
+        <description>Test class for Services_SmartFile_Client</description>
+        <long-description></long-description>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="16" package="Default">
+        <name>testPing</name>
+        <full_name>testPing</full_name>
+        <docblock line="10">
+          <description>Test the ping endpoint.</description>
+          <long-description>&lt;p&gt;Ping is the only endpoint that can be tested
+without authentication.&lt;/p&gt;</long-description>
+          <tag line="10" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file tests/ClientTest.php</error>
+    </parse_markers>
+  </file>
+  <file path="tests/BasicClientTest.php" hash="6ea8d16e1306b7a5fb136abe5eddf64e" package="Default">
+    <include line="3" type="Require Once" package="Default">
+      <name>../Services/SmartFile/BasicClient.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="global" line="8" package="Default">
+      <extends>\PHPUnit_Framework_TestCase</extends>
+      <name>BasicClientTest</name>
+      <full_name>\BasicClientTest</full_name>
+      <docblock line="5">
+        <description>Test class for Services_SmartFile_BasicClient</description>
+        <long-description></long-description>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="10" package="Default">
+        <name>testOne</name>
+        <full_name>testOne</full_name>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file tests/BasicClientTest.php</error>
+      <error line="10" code="50010">No DocBlock was found for method testOne()</error>
+    </parse_markers>
+  </file>
+  <file path="Services/SmartFile.php" hash="ff013336a1d28dc190bddca620f0d8e9" package="Default">
+    <function namespace="global" line="59" package="Default">
+      <name>prompt</name>
+      <full_name>\prompt</full_name>
+      <docblock line="51">
+        <description>A short function to ask the user a question and return their
+response.</description>
+        <long-description></long-description>
+        <tag line="51" name="param" description="Prompt" type="string" variable="$prompt">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="51" name="return" description="" type="string">
+          <type by_reference="false">string</type>
+        </tag>
+      </docblock>
+      <argument line="59">
+        <name>$prompt</name>
+        <default>''</default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="global" line="70" package="Default">
+      <name>main</name>
+      <full_name>\main</full_name>
+      <docblock line="65">
+        <description>Main function for command line</description>
+        <long-description></long-description>
+        <tag line="65" name="return" description="" type="null">
+          <type by_reference="false">null</type>
+        </tag>
+      </docblock>
+    </function>
+    <class final="false" abstract="false" namespace="global" line="42" package="SmartFile">
+      <extends/>
+      <name>Services_SmartFile</name>
+      <full_name>\Services_SmartFile</full_name>
+      <docblock line="3">
+        <description>SmartFile PHP SDK</description>
+        <long-description>&lt;p&gt;PHP version 5&lt;/p&gt;
+
+&lt;p&gt;LICENSE: The MIT License (MIT)&lt;/p&gt;
+
+&lt;p&gt;Copyright Copyright (c) 2012, SmartFile&lt;/p&gt;
+
+&lt;p&gt;Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:&lt;/p&gt;
+
+&lt;p&gt;The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.&lt;/p&gt;
+
+&lt;p&gt;THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.&lt;/p&gt;</long-description>
+        <tag line="3" name="category" description="Web_Services"/>
+        <tag line="3" name="package" description="SmartFile"/>
+        <tag line="3" name="author" description="Ben Timby &lt;btimby@gmail.com&gt;"/>
+        <tag line="3" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+        <tag line="3" name="copyright" description="2012 SmartFile"/>
+        <tag line="3" name="license" description="See LICENSE file"/>
+        <tag line="3" name="version" description="GIT: $Id$"/>
+        <tag line="3" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+        <tag line="3" name="since" description="File available since Release 1.0"/>
+      </docblock>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file Services/SmartFile.php</error>
+    </parse_markers>
+  </file>
+  <file path="Services/SmartFile/Client.php" hash="5da6b5fccef589a808a7528977d4fb68" package="SmartFile">
+    <docblock line="2">
+      <description>SmartFile PHP SDK</description>
+      <long-description>&lt;p&gt;PHP version 5&lt;/p&gt;
+
+&lt;p&gt;LICENSE: The MIT License (MIT)&lt;/p&gt;
+
+&lt;p&gt;Copyright Copyright (c) 2012, SmartFile&lt;/p&gt;
+
+&lt;p&gt;Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:&lt;/p&gt;
+
+&lt;p&gt;The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.&lt;/p&gt;
+
+&lt;p&gt;THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.&lt;/p&gt;</long-description>
+      <tag line="2" name="category" description="Web_Services"/>
+      <tag line="2" name="package" description="SmartFile"/>
+      <tag line="2" name="author" description="Ben Timby &lt;btimby@gmail.com&gt;"/>
+      <tag line="2" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+      <tag line="2" name="copyright" description="2012 SmartFile"/>
+      <tag line="2" name="license" description="See LICENSE file"/>
+      <tag line="2" name="version" description="GIT: $Id$"/>
+      <tag line="2" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      <tag line="2" name="since" description="File available since Release 2.1"/>
+    </docblock>
+    <include line="40" type="Require Once" package="Default">
+      <name>Exception.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="global" line="52" package="SmartFile\Client">
+      <extends/>
+      <name>Service_SmartFile_Client</name>
+      <full_name>\Service_SmartFile_Client</full_name>
+      <docblock line="42">
+        <description>Base API client, handles communication, retry, versioning etc.</description>
+        <long-description></long-description>
+        <tag line="42" name="category" description="Web_Services"/>
+        <tag line="42" name="package" description="SmartFile_Client"/>
+        <tag line="42" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+        <tag line="42" name="copyright" description="2012 SmartFile"/>
+        <tag line="42" name="license" description="See LICENSE file"/>
+        <tag line="42" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      </docblock>
+      <property final="false" static="false" visibility="public" line="61" namespace="global" package="Default">
+        <name>$api_base_url</name>
+        <default>'https://app.smartfile.com/api/2'</default>
+        <docblock line="57">
+          <description>Smartfile API URL.</description>
+          <long-description></long-description>
+          <tag line="57" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="73" package="SmartFile\Client">
+        <name>decodeChunked</name>
+        <full_name>decodeChunked</full_name>
+        <docblock line="66">
+          <description>This function decodes a chunked http response</description>
+          <long-description></long-description>
+          <tag line="66" name="param" description="Http Response to decode" type="string" variable="$str">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="66" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="73">
+          <name>$str</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="98" package="SmartFile\Client">
+        <name>doRequest</name>
+        <full_name>doRequest</full_name>
+        <docblock line="84">
+          <description>This function performs an HTTP request and parses the response.</description>
+          <long-description>&lt;p&gt;It raises an exception if the server cannot be contacted or if
+the server returns a status other than 201. Any status other
+that 201 results in the exception receiving the HTTP status in
+addition to the returned error message.&lt;/p&gt;</long-description>
+          <tag line="84" name="param" description="Url of the Request" type="string" variable="$uri">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="84" name="param" description="Http Method" type="string" variable="$method">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="84" name="param" description="Http Parameters" type="array" variable="$data">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="84" name="param" description="Extra Headers Such as Authentication Information" type="string" variable="$extra_headers">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="84" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="98">
+          <name>$uri</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="98">
+          <name>$method</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="98">
+          <name>$data</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="98">
+          <name>$extra_headers</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="157" package="SmartFile\Client">
+        <name>_request</name>
+        <full_name>_request</full_name>
+        <docblock line="148">
+          <description>Handles retrying failed requests and error handling.</description>
+          <long-description></long-description>
+          <tag line="148" name="param" description="URI of endpoint" type="string" variable="$uri">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="148" name="param" description="HTTP method" type="string" variable="$method">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="148" name="param" description="HTTP request data" type="array" variable="$data">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="148" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="157">
+          <name>$uri</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="157">
+          <name>$method</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="157">
+          <name>$data</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="193" package="SmartFile\Client">
+        <name>get</name>
+        <full_name>get</full_name>
+        <docblock line="185">
+          <description>Public wrapper for GET requests</description>
+          <long-description></long-description>
+          <tag line="185" name="param" description="URI of endpoint" type="string" variable="$endpoint">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="185" name="param" description="Get params" type="array" variable="$data">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="185" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="193">
+          <name>$endpoint</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="193">
+          <name>$data</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="206" package="SmartFile\Client">
+        <name>put</name>
+        <full_name>put</full_name>
+        <docblock line="198">
+          <description>Public wrapper for PUT requests</description>
+          <long-description></long-description>
+          <tag line="198" name="param" description="URI of endpoint" type="string" variable="$endpoint">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="198" name="param" description="PUT data" type="array" variable="$data">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="198" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="206">
+          <name>$endpoint</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="206">
+          <name>$data</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="219" package="SmartFile\Client">
+        <name>post</name>
+        <full_name>post</full_name>
+        <docblock line="211">
+          <description>Public wrapper for POST requests</description>
+          <long-description></long-description>
+          <tag line="211" name="param" description="URI of endpoint" type="string" variable="$endpoint">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="211" name="param" description="POST data" type="array" variable="$data">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="211" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="219">
+          <name>$endpoint</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="219">
+          <name>$data</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="232" package="SmartFile\Client">
+        <name>delete</name>
+        <full_name>delete</full_name>
+        <docblock line="224">
+          <description>Public wrapper for DELETE requests</description>
+          <long-description></long-description>
+          <tag line="224" name="param" description="URI of endpoint" type="string" variable="$endpoint">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="224" name="param" description="DELETE data" type="array" variable="$data">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="224" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="232">
+          <name>$endpoint</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="232">
+          <name>$data</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="Services/SmartFile/BasicClient.php" hash="05d26e02f2d39c5b056b422c530aa7f5" package="SmartFile">
+    <docblock line="2">
+      <description>SmartFile PHP SDK</description>
+      <long-description>&lt;p&gt;PHP version 5&lt;/p&gt;
+
+&lt;p&gt;LICENSE: The MIT License (MIT)&lt;/p&gt;
+
+&lt;p&gt;Copyright Copyright (c) 2012, SmartFile&lt;/p&gt;
+
+&lt;p&gt;Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:&lt;/p&gt;
+
+&lt;p&gt;The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.&lt;/p&gt;
+
+&lt;p&gt;THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.&lt;/p&gt;</long-description>
+      <tag line="2" name="category" description="Web_Services"/>
+      <tag line="2" name="package" description="SmartFile"/>
+      <tag line="2" name="author" description="Ben Timby &lt;btimby@gmail.com&gt;"/>
+      <tag line="2" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+      <tag line="2" name="copyright" description="2012 SmartFile"/>
+      <tag line="2" name="license" description="See LICENSE file"/>
+      <tag line="2" name="version" description="GIT: $Id$"/>
+      <tag line="2" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      <tag line="2" name="since" description="File available since Release 2.1"/>
+    </docblock>
+    <include line="40" type="Require Once" package="Default">
+      <name>Client.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="global" line="52" package="SmartFile\Client">
+      <extends>\Service_SmartFile_Client</extends>
+      <name>Service_SmartFile_BasicClient</name>
+      <full_name>\Service_SmartFile_BasicClient</full_name>
+      <docblock line="42">
+        <description>Basic Authentication API client, handles communication, retry, versioning etc.</description>
+        <long-description></long-description>
+        <tag line="42" name="category" description="Web_Services"/>
+        <tag line="42" name="package" description="SmartFile_Client"/>
+        <tag line="42" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+        <tag line="42" name="copyright" description="2012 SmartFile"/>
+        <tag line="42" name="license" description="See LICENSE file"/>
+        <tag line="42" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="60" namespace="global" package="Default">
+        <name>$_api_key</name>
+        <default>''</default>
+        <docblock line="56">
+          <description>SmartFile Api Key</description>
+          <long-description></long-description>
+          <tag line="56" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="66" namespace="global" package="Default">
+        <name>$_api_pwd</name>
+        <default>''</default>
+        <docblock line="62">
+          <description>SmartFile Api password</description>
+          <long-description></long-description>
+          <tag line="62" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="80" package="SmartFile\Client">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="71">
+          <description>Private constructor.</description>
+          <long-description>&lt;p&gt;Set the api key and pass once
+when you instantiate this class.&lt;/p&gt;</long-description>
+          <tag line="71" name="param" description="API key" type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="71" name="param" description="API Password" type="string" variable="$pass">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="71" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+        <argument line="80">
+          <name>$key</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="80">
+          <name>$pass</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="99" package="SmartFile\Client">
+        <name>doRequest</name>
+        <full_name>doRequest</full_name>
+        <docblock line="88">
+          <description>Override the parent class to add Basic Authentication here.</description>
+          <long-description>&lt;p&gt;Actually makes the HTTP request&lt;/p&gt;</long-description>
+          <tag line="88" name="param" description="Url of the Request" type="string" variable="$uri">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="88" name="param" description="Http Method" type="string" variable="$method">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="88" name="param" description="Http Parameters" type="array" variable="$data">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="88" name="param" description="Extra Headers Such as Authentication Information" type="string" variable="$extra_headers">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="88" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="99">
+          <name>$uri</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="99">
+          <name>$method</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="99">
+          <name>$data</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="99">
+          <name>$extra_headers</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="Services/SmartFile/Exception.php" hash="2a10eaeb746fa6aeba73a5ed9f921ed2" package="SmartFile">
+    <docblock line="2">
+      <description>SmartFile PHP SDK</description>
+      <long-description>&lt;p&gt;PHP version 5&lt;/p&gt;
+
+&lt;p&gt;LICENSE: The MIT License (MIT)&lt;/p&gt;
+
+&lt;p&gt;Copyright Copyright (c) 2012, SmartFile&lt;/p&gt;
+
+&lt;p&gt;Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:&lt;/p&gt;
+
+&lt;p&gt;The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.&lt;/p&gt;
+
+&lt;p&gt;THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.&lt;/p&gt;</long-description>
+      <tag line="2" name="category" description="Web_Services"/>
+      <tag line="2" name="package" description="SmartFile"/>
+      <tag line="2" name="author" description="Ben Timby &lt;btimby@gmail.com&gt;"/>
+      <tag line="2" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+      <tag line="2" name="copyright" description="2012 SmartFile"/>
+      <tag line="2" name="license" description="See LICENSE file"/>
+      <tag line="2" name="version" description="GIT: $Id$"/>
+      <tag line="2" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      <tag line="2" name="since" description="File available since Release 2.1"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="global" line="50" package="SmartFile\Client">
+      <extends>\Exception</extends>
+      <name>Service_SmartFile_APIException</name>
+      <full_name>\Service_SmartFile_APIException</full_name>
+      <docblock line="40">
+        <description>SmartFile API base exception</description>
+        <long-description></long-description>
+        <tag line="40" name="category" description="Web_Services"/>
+        <tag line="40" name="package" description="SmartFile_Client"/>
+        <tag line="40" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+        <tag line="40" name="copyright" description="2012 SmartFile"/>
+        <tag line="40" name="license" description="See LICENSE file"/>
+        <tag line="40" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      </docblock>
+    </class>
+    <class final="false" abstract="false" namespace="global" line="64" package="SmartFile\Client">
+      <extends>\Service_SmartFile_APIException</extends>
+      <name>Service_SmartFile_RequestException</name>
+      <full_name>\Service_SmartFile_RequestException</full_name>
+      <docblock line="54">
+        <description>Exception for issues regarding a request.</description>
+        <long-description></long-description>
+        <tag line="54" name="category" description="Web_Services"/>
+        <tag line="54" name="package" description="SmartFile_Client"/>
+        <tag line="54" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+        <tag line="54" name="copyright" description="2012 SmartFile"/>
+        <tag line="54" name="license" description="See LICENSE file"/>
+        <tag line="54" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      </docblock>
+    </class>
+    <class final="false" abstract="false" namespace="global" line="78" package="SmartFile\Client">
+      <extends>\Service_SmartFile_APIException</extends>
+      <name>Service_SmartFile_ResponseException</name>
+      <full_name>\Service_SmartFile_ResponseException</full_name>
+      <docblock line="68">
+        <description>Exception for issues regarding a response.</description>
+        <long-description></long-description>
+        <tag line="68" name="category" description="Web_Services"/>
+        <tag line="68" name="package" description="SmartFile_Client"/>
+        <tag line="68" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+        <tag line="68" name="copyright" description="2012 SmartFile"/>
+        <tag line="68" name="license" description="See LICENSE file"/>
+        <tag line="68" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="88" package="SmartFile\Client">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="81">
+          <description>Parse response to add more info about the exception</description>
+          <long-description></long-description>
+          <tag line="81" name="param" description="HTTP Status code" type="string" variable="$http_status">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="81" name="param" description="HTTP Response" type="string" variable="$response">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="81" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+        <argument line="88">
+          <name>$http_status</name>
+          <default>0</default>
+          <type/>
+        </argument>
+        <argument line="88">
+          <name>$response</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="Services/SmartFile/OAuthClient.php" hash="e7f14f7979da74fa842182b48f05cbad" package="SmartFile">
+    <docblock line="2">
+      <description>SmartFile PHP SDK</description>
+      <long-description>&lt;p&gt;PHP version 5&lt;/p&gt;
+
+&lt;p&gt;LICENSE: The MIT License (MIT)&lt;/p&gt;
+
+&lt;p&gt;Copyright Copyright (c) 2012, SmartFile&lt;/p&gt;
+
+&lt;p&gt;Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:&lt;/p&gt;
+
+&lt;p&gt;The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.&lt;/p&gt;
+
+&lt;p&gt;THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.&lt;/p&gt;</long-description>
+      <tag line="2" name="category" description="Web_Services"/>
+      <tag line="2" name="package" description="SmartFile"/>
+      <tag line="2" name="author" description="Ben Timby &lt;btimby@gmail.com&gt;"/>
+      <tag line="2" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+      <tag line="2" name="copyright" description="2012 SmartFile"/>
+      <tag line="2" name="license" description="See LICENSE file"/>
+      <tag line="2" name="version" description="GIT: $Id$"/>
+      <tag line="2" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      <tag line="2" name="since" description="File available since Release 2.1"/>
+    </docblock>
+    <include line="40" type="Require Once" package="Default">
+      <name>Client.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="global" line="53" package="SmartFile\Client">
+      <extends>\Service_SmartFile_Client</extends>
+      <name>Service_SmartFile_OAuthClient</name>
+      <full_name>\Service_SmartFile_OAuthClient</full_name>
+      <docblock line="42">
+        <description>API client that uses OAuth tokens.</description>
+        <long-description>&lt;p&gt;Layers a more complex form of
+ authentication useful for 3rd party access on top of the base Client.&lt;/p&gt;</long-description>
+        <tag line="42" name="category" description="Web_Services"/>
+        <tag line="42" name="package" description="SmartFile_Client"/>
+        <tag line="42" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+        <tag line="42" name="copyright" description="2012 SmartFile"/>
+        <tag line="42" name="license" description="See LICENSE file"/>
+        <tag line="42" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      </docblock>
+      <property final="false" static="false" visibility="public" line="61" namespace="global" package="Default">
+        <name>$oauth_base_url</name>
+        <default>'https://app.smartfile.com'</default>
+        <docblock line="57">
+          <description>Smartfile API URL.</description>
+          <long-description></long-description>
+          <tag line="57" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="71" namespace="global" package="Default">
+        <name>$_client_token</name>
+        <default>null</default>
+        <docblock line="66">
+          <description>SmartFile Client Token
+You get it when you register your application.</description>
+          <long-description></long-description>
+          <tag line="66" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="78" namespace="global" package="Default">
+        <name>$_client_secret</name>
+        <default>null</default>
+        <docblock line="73">
+          <description>SmartFile Client Secret
+You get it when you register your application.</description>
+          <long-description></long-description>
+          <tag line="73" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="86" namespace="global" package="Default">
+        <name>$_request_token</name>
+        <default>null</default>
+        <docblock line="80">
+          <description>SmartFile Request Token
+This is given to you after you call getRequestToken() and should be saved
+by your application.</description>
+          <long-description></long-description>
+          <tag line="80" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="94" namespace="global" package="Default">
+        <name>$_request_secret</name>
+        <default>null</default>
+        <docblock line="88">
+          <description>SmartFile Request Secret
+This is given to you after you call getRequestToken() and should be saved
+by your application.</description>
+          <long-description></long-description>
+          <tag line="88" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="102" namespace="global" package="Default">
+        <name>$_access_token</name>
+        <default>null</default>
+        <docblock line="96">
+          <description>SmartFile Access Token
+This is given to you after you call getAccessToken() and should be saved
+by your application.</description>
+          <long-description></long-description>
+          <tag line="96" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="110" namespace="global" package="Default">
+        <name>$_access_secret</name>
+        <default>null</default>
+        <docblock line="104">
+          <description>SmartFile Access Secret
+This is given to you after you call getAccessToken() and should be saved
+by your application.</description>
+          <long-description></long-description>
+          <tag line="104" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="private" line="116" namespace="global" package="Default">
+        <name>$_nonce_chars</name>
+        <default>'0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'</default>
+        <docblock line="112">
+          <description>nonce char list</description>
+          <long-description></long-description>
+          <tag line="112" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="134" package="SmartFile\Client">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="123">
+          <description>Private constructor.</description>
+          <long-description>&lt;p&gt;Set the oauth token and secret once
+when you instantiate this class.&lt;/p&gt;</long-description>
+          <tag line="123" name="param" description="Client OAuth Token" type="string" variable="$client_token">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="123" name="param" description="Client OAuth Secret" type="string" variable="$client_secret">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="123" name="param" description="OAuth Access Token" type="string" variable="$request_token">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="123" name="param" description="OAuth Access Secret" type="string" variable="$request_secret">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="123" name="return" description="" type="null">
+            <type by_reference="false">null</type>
+          </tag>
+        </docblock>
+        <argument line="135">
+          <name>$client_token</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="136">
+          <name>$client_secret</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="137">
+          <name>$request_token</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="138">
+          <name>$request_secret</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="155" package="SmartFile\Client">
+        <name>_genNonce</name>
+        <full_name>_genNonce</full_name>
+        <docblock line="148">
+          <description>Generate a random string of x chars</description>
+          <long-description></long-description>
+          <tag line="148" name="param" description="Length of resultant string" type="int" variable="$length">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="148" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="155">
+          <name>$length</name>
+          <default>32</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="177" package="SmartFile\Client">
+        <name>doRequest</name>
+        <full_name>doRequest</full_name>
+        <docblock line="166">
+          <description>Override the parent class to add OAuth Authentication here.</description>
+          <long-description>&lt;p&gt;Actually makes the HTTP request&lt;/p&gt;</long-description>
+          <tag line="166" name="param" description="Url of the Request" type="string" variable="$uri">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="166" name="param" description="Http Method" type="string" variable="$method">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="166" name="param" description="Http Parameters" type="array" variable="$data">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="166" name="param" description="Extra Headers Such as Authentication Information" type="string" variable="$extra_headers">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="166" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="177">
+          <name>$uri</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="177">
+          <name>$method</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="177">
+          <name>$data</name>
+          <default>null</default>
+          <type/>
+        </argument>
+        <argument line="177">
+          <name>$extra_headers</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="197" package="SmartFile\Client">
+        <name>getRequestToken</name>
+        <full_name>getRequestToken</full_name>
+        <docblock line="190">
+          <description>The first step of the OAuth workflow.</description>
+          <long-description></long-description>
+          <tag line="190" name="param" description="Callback to call once complete" type="string" variable="$callback">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="190" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="197">
+          <name>$callback</name>
+          <default>null</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="246" package="SmartFile\Client">
+        <name>getAuthorizationUrl</name>
+        <full_name>getAuthorizationUrl</full_name>
+        <docblock line="238">
+          <description>The second step of the OAuth workflow.</description>
+          <long-description>&lt;p&gt;Send the user to the URL obtained. They will authorize the application to
+access their account.
+The user will be given a verifier if a callback is not specified.&lt;/p&gt;</long-description>
+          <tag line="238" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="267" package="SmartFile\Client">
+        <name>getAccessToken</name>
+        <full_name>getAccessToken</full_name>
+        <docblock line="259">
+          <description>The final step of the OAuth workflow.</description>
+          <long-description>&lt;p&gt;After this the client can make
+API calls.&lt;/p&gt;</long-description>
+          <tag line="259" name="param" description="Verifier given to user or passed to your callback." type="string" variable="$verifier">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="259" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+        <argument line="267">
+          <name>$verifier</name>
+          <default>''</default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="examples/whoami.php" hash="0b872090a845edffe711940d42e7e612" package="SmartFile">
+    <docblock line="2">
+      <description>SmartFile PHP SDK</description>
+      <long-description>&lt;p&gt;PHP version 5&lt;/p&gt;
+
+&lt;p&gt;LICENSE: The MIT License (MIT)&lt;/p&gt;
+
+&lt;p&gt;Copyright Copyright (c) 2012, SmartFile&lt;/p&gt;
+
+&lt;p&gt;Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:&lt;/p&gt;
+
+&lt;p&gt;The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.&lt;/p&gt;
+
+&lt;p&gt;THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.&lt;/p&gt;</long-description>
+      <tag line="2" name="category" description="Web_Services"/>
+      <tag line="2" name="package" description="SmartFile"/>
+      <tag line="2" name="author" description="Ben Timby &lt;btimby@gmail.com&gt;"/>
+      <tag line="2" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+      <tag line="2" name="copyright" description="2012 SmartFile"/>
+      <tag line="2" name="license" description="See LICENSE file"/>
+      <tag line="2" name="version" description="GIT: $Id$"/>
+      <tag line="2" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      <tag line="2" name="since" description="File available since Release 2.1"/>
+    </docblock>
+    <include line="40" type="Require Once" package="Default">
+      <name>../Services/SmartFile/BasicClient.php</name>
+    </include>
+    <constant namespace="global" line="47" package="SmartFile">
+      <name>API_KEY</name>
+      <full_name>\API_KEY</full_name>
+      <value>"api_key"</value>
+    </constant>
+    <constant namespace="global" line="48" package="SmartFile">
+      <name>API_PWD</name>
+      <full_name>\API_PWD</full_name>
+      <value>"api_pass"</value>
+    </constant>
+  </file>
+  <file path="examples/whoami-oauth.php" hash="89fa1887ffcd97a0816460c87b5f6083" package="SmartFile">
+    <docblock line="2">
+      <description>SmartFile PHP SDK</description>
+      <long-description>&lt;p&gt;PHP version 5&lt;/p&gt;
+
+&lt;p&gt;LICENSE: The MIT License (MIT)&lt;/p&gt;
+
+&lt;p&gt;Copyright Copyright (c) 2012, SmartFile&lt;/p&gt;
+
+&lt;p&gt;Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:&lt;/p&gt;
+
+&lt;p&gt;The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.&lt;/p&gt;
+
+&lt;p&gt;THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.&lt;/p&gt;</long-description>
+      <tag line="2" name="category" description="Web_Services"/>
+      <tag line="2" name="package" description="SmartFile"/>
+      <tag line="2" name="author" description="Ben Timby &lt;btimby@gmail.com&gt;"/>
+      <tag line="2" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+      <tag line="2" name="copyright" description="2012 SmartFile"/>
+      <tag line="2" name="license" description="See LICENSE file"/>
+      <tag line="2" name="version" description="GIT: $Id$"/>
+      <tag line="2" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      <tag line="2" name="since" description="File available since Release 2.1"/>
+    </docblock>
+    <include line="40" type="Require Once" package="Default">
+      <name>../Services/SmartFile/OAuthClient.php</name>
+    </include>
+    <constant namespace="global" line="48" package="SmartFile">
+      <name>OAUTH_TOKEN</name>
+      <full_name>\OAUTH_TOKEN</full_name>
+      <value>"oauth_token"</value>
+    </constant>
+    <constant namespace="global" line="49" package="SmartFile">
+      <name>OAUTH_SECRET</name>
+      <full_name>\OAUTH_SECRET</full_name>
+      <value>"oauth_secret"</value>
+    </constant>
+  </file>
+  <file path="examples/users.php" hash="c6a92e39d3619bf650c952206e18aaea" package="SmartFile">
+    <docblock line="2">
+      <description>SmartFile PHP SDK</description>
+      <long-description>&lt;p&gt;PHP version 5&lt;/p&gt;
+
+&lt;p&gt;LICENSE: The MIT License (MIT)&lt;/p&gt;
+
+&lt;p&gt;Copyright Copyright (c) 2012, SmartFile&lt;/p&gt;
+
+&lt;p&gt;Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:&lt;/p&gt;
+
+&lt;p&gt;The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.&lt;/p&gt;
+
+&lt;p&gt;THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.&lt;/p&gt;</long-description>
+      <tag line="2" name="category" description="Web_Services"/>
+      <tag line="2" name="package" description="SmartFile"/>
+      <tag line="2" name="author" description="Ben Timby &lt;btimby@gmail.com&gt;"/>
+      <tag line="2" name="author" description="Ryan Johnston &lt;github@shopandlearn.net&gt;"/>
+      <tag line="2" name="copyright" description="2012 SmartFile"/>
+      <tag line="2" name="license" description="See LICENSE file"/>
+      <tag line="2" name="version" description="GIT: $Id$"/>
+      <tag line="2" name="link" description="http://pear.php.net/package/SmartFile" link="http://pear.php.net/package/SmartFile"/>
+      <tag line="2" name="since" description="File available since Release 2.1"/>
+    </docblock>
+    <include line="40" type="Require Once" package="Default">
+      <name>../Services/SmartFile/BasicClient.php</name>
+    </include>
+    <constant namespace="global" line="47" package="SmartFile">
+      <name>API_KEY</name>
+      <full_name>\API_KEY</full_name>
+      <value>"api-key"</value>
+    </constant>
+    <constant namespace="global" line="48" package="SmartFile">
+      <name>API_PWD</name>
+      <full_name>\API_PWD</full_name>
+      <value>"api-pass"</value>
+    </constant>
+    <function namespace="global" line="66" package="SmartFile">
+      <name>createUser</name>
+      <full_name>\createUser</full_name>
+      <docblock line="53">
+        <description>This function makes the User add API call.</description>
+        <long-description>&lt;p&gt;It uses the BasicClient
+class to handle the transport. Additional API calls could be supported
+simply by writing additional wrappers that create the $data array and
+use BasicClient to do the grunt work.&lt;/p&gt;</long-description>
+        <tag line="53" name="param" description="User Full Name" type="string" variable="$fullname">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="53" name="param" description="User Login" type="string" variable="$username">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="53" name="param" description="User password" type="string" variable="$password">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="53" name="param" description="User Email" type="string" variable="$email">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="53" name="return" description="" type="null">
+          <type by_reference="false">null</type>
+        </tag>
+      </docblock>
+      <argument line="66">
+        <name>$fullname</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="66">
+        <name>$username</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="66">
+        <name>$password</name>
+        <default></default>
+        <type/>
+      </argument>
+      <argument line="66">
+        <name>$email</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+    <function namespace="global" line="88" package="SmartFile">
+      <name>deleteUser</name>
+      <full_name>\deleteUser</full_name>
+      <docblock line="78">
+        <description>This function makes the User delete API call.</description>
+        <long-description>&lt;p&gt;It uses the BasicClient
+class to handle the transport. Additional API calls could be supported
+simply by writing additional wrappers that create the $data array and
+use BasicClient to do the grunt work.&lt;/p&gt;</long-description>
+        <tag line="78" name="param" description="User Login" type="string" variable="$username">
+          <type by_reference="false">string</type>
+        </tag>
+        <tag line="78" name="return" description="" type="null">
+          <type by_reference="false">null</type>
+        </tag>
+      </docblock>
+      <argument line="88">
+        <name>$username</name>
+        <default></default>
+        <type/>
+      </argument>
+    </function>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <package name="SmartFile" full_name="SmartFile">
+    <package name="Client" full_name="SmartFile\Client"/>
+  </package>
+  <namespace name="global" full_name="global"/>
+  <marker count="0">todo</marker>
+  <marker count="0">fixme</marker>
+  <deprecated count="0"/>
+</project>
