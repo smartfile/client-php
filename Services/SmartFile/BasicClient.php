@@ -96,10 +96,10 @@ Class Service_SmartFile_BasicClient extends Service_SmartFile_Client
      *
      * @return array
      */
-    public function doRequest($uri, $method, $data=null, $extra_headers='')
+    public function doRequest($uri, $method, $data=null, $extra_headers=array())
     {
         $auth = base64_encode($this->_api_key . ":" . $this->_api_pwd);
-        $extra_headers = $extra_headers . "Authorization: Basic " . $auth . "\r\n";
+        $extra_headers["Authorization"] = "Basic " . $auth;
         return parent::doRequest($uri, $method, $data, $extra_headers);
 
     }

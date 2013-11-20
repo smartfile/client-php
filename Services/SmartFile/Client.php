@@ -112,11 +112,12 @@ class Service_SmartFile_Client
      * @param string $uri           Url of the Request
      * @param string $method        Http Method
      * @param array  $data          Http Parameters
-     * @param string $extra_headers Extra Headers Such as Authentication Information
+     * @param array  $extra_headers Extra Headers Such as Authentication Information
      *
      * @return array
      */
-    protected function doRequest($uri, $method, $data=null, $extra_headers='')
+    protected function doRequest($uri, $method, $data=null,
+                                 $extra_headers=array())
     {
         if (substr($uri, 0, 4) == 'http') {
             $url = $uri;
@@ -131,10 +132,35 @@ class Service_SmartFile_Client
         } else {
             $port = 80;
         }
-        if (!is_null($data)) {
-            $data = http_build_query($data);
-        } else {
+
+        // Convert data, which could have a resource, into string to send.
+        if (is_null($data)) {
             $data = '';
+        } elseif (is_resource(array_values($data)[0])) {
+            $boundary = "----------------------------" . uniqid();
+            $content_type = "multipart/form-data; boundary=$boundary";
+            $filename = array_keys($data)[0];
+            $rh = array_values($data)[0];
+            $data = "--$boundary\r\n" .
+                "Content-Disposition: form-data; " .
+                "name=\"$filename\"; filename=\"$filename\"\r\n" .
+                "Content-Type: application/octet-stream\r\n\r\n" .
+                fread($rh, fstat($rh)[size]) .
+                "\r\n--$boundary--";
+        } else {
+            $data = http_build_query($data);
+        }
+
+        // Add a default content type and convert headers into string.
+        if (!array_key_exists('content-type',
+                              array_change_key_case($extra_headers))) {
+            $extra_headers['Content-Type'] =
+                isset($content_type) ? $content_type :
+                'application/x-www-form-urlencoded';
+        }
+        $extra_headers_str = "";
+        foreach ($extra_headers as $key => $value) {
+            $extra_headers_str .= $key . ": " . $value . "\r\n";
         }
 
         // We use fsockopen to perform our HTTP request as that is the
@@ -151,9 +177,8 @@ class Service_SmartFile_Client
             $fp,  strtoupper($method) . ' ' . $url_parts['path'] . " HTTP/1.1\r\n" .
             'Host: ' . $host_header . "\r\n" .
             "User-Agent: SmartFile PHP API client v2.1\r\n" .
-            "Content-Type: application/x-www-form-urlencoded\r\n" .
             'Content-Length: ' . strlen($data) . "\r\n" .
-            $extra_headers .
+            $extra_headers_str .
             "Connection: close\r\n\r\n"
         );
         if (strtolower($method) == 'post') {
@@ -173,12 +198,13 @@ class Service_SmartFile_Client
      * @param string $uri    URI of endpoint
      * @param string $method HTTP method
      * @param array  $data   HTTP request data
+     * @param array  $extra_headers Extra Headers Such as Authentication Information
      *
      * @return array
      */
-    private function _request($uri, $method, $data=null)
+    private function _request($uri, $method, $data=null, $extra_headers=array())
     {
-        $response = $this->doRequest($uri, $method, $data);
+        $response = $this->doRequest($uri, $method, $data, $extra_headers);
 
         // Get Status from headers:
         $sep = strpos($response, "\r\n");
@@ -189,7 +215,7 @@ class Service_SmartFile_Client
 
         $method = strtolower($method);
         if (($method == 'get' && $http_status != 200)
-            || ($method == 'post' && $http_status != 201)
+            || ($method == 'post' && $http_status != 200 && $http_status != 201)
             || ($method == 'put' && $http_status != 200)
             || ($method == 'delete' && $http_status != 204)
         ) {
@@ -209,9 +235,9 @@ class Service_SmartFile_Client
      *
      * @return array
      */
-    public function get($endpoint, $data=null)
+    public function get($endpoint, $data=null, $extra_headers=array())
     {
-        return $this->_request($endpoint, 'get', $data);
+        return $this->_request($endpoint, 'get', $data, $extra_headers);
     }
 
     /**
@@ -222,9 +248,9 @@ class Service_SmartFile_Client
      *
      * @return array
      */
-    public function put($endpoint, $data=null)
+    public function put($endpoint, $data=null, $extra_headers=array())
     {
-        return $this->_request($endpoint, 'put', $data);
+        return $this->_request($endpoint, 'put', $data, $extra_headers);
     }
 
     /**
@@ -235,9 +261,9 @@ class Service_SmartFile_Client
      *
      * @return array
      */
-    public function post($endpoint, $data=null)
+    public function post($endpoint, $data=null, $extra_headers=array())
     {
-        return $this->_request($endpoint, 'post', $data);
+        return $this->_request($endpoint, 'post', $data, $extra_headers);
     }
 
     /**
@@ -248,9 +274,9 @@ class Service_SmartFile_Client
      *
      * @return array
      */
-    public function delete($endpoint, $data=null)
+    public function delete($endpoint, $data=null, $extra_headers=array())
     {
-        return $this->_request($endpoint, 'delete', $data);
+        return $this->_request($endpoint, 'delete', $data, $extra_headers);
     }
 }
 

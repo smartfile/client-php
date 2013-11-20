@@ -170,11 +170,11 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
      * @param string $uri           Url of the Request
      * @param string $method        Http Method
      * @param array  $data          Http Parameters
-     * @param string $extra_headers Extra Headers Such as Authentication Information
+     * @param array  $extra_headers Extra Headers Such as Authentication Information
      *
      * @return array
      */
-    public function doRequest($uri, $method, $data=null, $extra_headers='')
+    public function doRequest($uri, $method, $data=null, $extra_headers=array())
     {
         // Add the OAuth authentication information to the request
         $auth = 'oauth_consumer_key="' . $this->_client_token . '",oauth_token="' .
@@ -215,7 +215,7 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
             //push callback to beginning of array
             $data = array_merge(array('callback_uri' => $callback), $data);
         }
-        $result = parent::doRequest($uri, 'post', $data, '');
+        $result = parent::doRequest($uri, 'post', $data);
         $result = $this->getBody($result);
         if ($result == 'Could not verify OAuth request.') {
             throw new Service_SmartFile_APIException(
@@ -273,7 +273,7 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
             'oauth_signature' => $this->_client_secret . '%26' .
                 $this->_request_secret
         );
-        $result = parent::doRequest($uri, 'post', $data, '');
+        $result = parent::doRequest($uri, 'post', $data);
         $result = $this->getBody($result);
         //convert returned string to array for easy access
         parse_str($result, $result);
