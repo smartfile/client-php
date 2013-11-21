@@ -96,15 +96,16 @@ File transfers
 
 Uploading and downloading files is supported.
 
-To upload a file, pass either a file-like object or a tuple of
-``(filename, file-like)`` as a kwarg.
+To upload a file::
 
-
+    $client = new Service_SmartFile_BasicClient(API_KEY, API_PWD);
+    $rh = fopen("/etc/motd", "rb");
+    $client->post("/path/data/", array("motd" => $rh));
+    fclose($rh);
 
 Downloading is automatic, if the ``'Content-Type'`` header indicates
 content other than the expected JSON return value, then a file-like object is
 returned.
-
 
 
 Tasks
