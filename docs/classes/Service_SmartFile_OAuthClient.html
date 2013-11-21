@@ -1,453 +1,1219 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-<meta charset="utf-8">
-<title>phpDocumentor » \Service_SmartFile_OAuthClient</title>
-<meta name="author" content="Mike van Riel">
-<meta name="description" content="">
-<link href="../css/template.css" rel="stylesheet" media="all">
-<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
-<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
 </head>
 <body>
+
 <div class="navbar navbar-fixed-top">
-<div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
-<li class="dropdown">
-<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
-                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
-<li><a>Packages</a></li>
-<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
-<li><a href="../packages/SmartFile.html"><i class="icon-folder-open"></i> SmartFile</a></li>
-</ul>
-</li>
-<li class="dropdown" id="charts-menu">
-<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
-                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
-</li>
-<li class="dropdown" id="reports-menu">
-<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
-                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
-<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">5</span></a></li>
-<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul></ul></a></li>
-<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">0</span></a></li>
-</ul>
-</li>
-</ul></div>
-</div></div>
-<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                    </ul>
+                    </li>
+                    <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                    <i class="icon-list-alt"></i>&#160;Errors
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                    <i class="icon-list-alt"></i>&#160;Markers
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
 </div>
-<div id="___" class="container">
-<noscript><div class="alert alert-warning">
-                            Javascript is disabled; several features are only available
-                            if Javascript is enabled.
-                        </div></noscript>
-<div class="row">
-<div class="span4">
-<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
-<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
-</div>
-<ul class="side-nav nav nav-list">
-<li class="nav-header">
-<i class="icon-custom icon-method"></i> Methods
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1198384088"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1198384088" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                    
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: Private constructor."><span class="description">Private constructor.</span><pre>__construct()</pre></a></li>
-<li class="method public inherited"><a href="#method_delete" title="delete :: Public wrapper for DELETE requests"><span class="description">Public wrapper for DELETE requests</span><pre>delete()</pre></a></li>
-<li class="method public "><a href="#method_doRequest" title="doRequest :: Override the parent class to add OAuth Authentication here."><span class="description">Override the parent class to add OAuth Authentication here.</span><pre>doRequest()</pre></a></li>
-<li class="method public inherited"><a href="#method_get" title="get :: Public wrapper for GET requests"><span class="description">Public wrapper for GET requests</span><pre>get()</pre></a></li>
-<li class="method public "><a href="#method_getAccessToken" title="getAccessToken :: The final step of the OAuth workflow."><span class="description">The final step of the OAuth workflow.</span><pre>getAccessToken()</pre></a></li>
-<li class="method public "><a href="#method_getAuthorizationUrl" title="getAuthorizationUrl :: The second step of the OAuth workflow."><span class="description">The second step of the OAuth workflow.</span><pre>getAuthorizationUrl()</pre></a></li>
-<li class="method public "><a href="#method_getRequestToken" title="getRequestToken :: The first step of the OAuth workflow."><span class="description">The first step of the OAuth workflow.</span><pre>getRequestToken()</pre></a></li>
-<li class="method public inherited"><a href="#method_post" title="post :: Public wrapper for POST requests"><span class="description">Public wrapper for POST requests</span><pre>post()</pre></a></li>
-<li class="method public inherited"><a href="#method_put" title="put :: Public wrapper for PUT requests"><span class="description">Public wrapper for PUT requests</span><pre>put()</pre></a></li>
-</ul>
-</li>
-<li class="nav-header protected">» Protected
-                    <ul><li class="method protected inherited"><a href="#method_decodeChunked" title="decodeChunked :: This function decodes a chunked http response"><span class="description">This function decodes a chunked http response</span><pre>decodeChunked()</pre></a></li></ul>
-</li>
-<li class="nav-header private">» Private
-                    <ul>
-<li class="method private "><a href="#method__genNonce" title="_genNonce :: Generate a random string of x chars"><span class="description">Generate a random string of x chars</span><pre>_genNonce()</pre></a></li>
-<li class="method private inherited"><a href="#method__request" title="_request :: Handles retrying failed requests and error handling."><span class="description">Handles retrying failed requests and error handling.</span><pre>_request()</pre></a></li>
-</ul>
-</li>
-<li class="nav-header">
-<i class="icon-custom icon-property"></i> Properties
-                    <ul>
-<li class="property public inherited"><a href="#property_api_base_url" title="$api_base_url :: Smartfile API URL."><span class="description"></span><pre>$api_base_url</pre></a></li>
-<li class="property public "><a href="#property_oauth_base_url" title="$oauth_base_url :: Smartfile API URL."><span class="description"></span><pre>$oauth_base_url</pre></a></li>
-</ul>
-</li>
-<li class="nav-header private">» Private
-                    <ul>
-<li class="property private "><a href="#property__access_secret" title="$_access_secret :: SmartFile Access Secret
-This is given to you after you call getAccessToken() and should be saved
-by your application."><span class="description"></span><pre>$_access_secret</pre></a></li>
-<li class="property private "><a href="#property__access_token" title="$_access_token :: SmartFile Access Token
-This is given to you after you call getAccessToken() and should be saved
-by your application."><span class="description"></span><pre>$_access_token</pre></a></li>
-<li class="property private "><a href="#property__client_secret" title="$_client_secret :: SmartFile Client Secret
-You get it when you register your application."><span class="description"></span><pre>$_client_secret</pre></a></li>
-<li class="property private "><a href="#property__client_token" title="$_client_token :: SmartFile Client Token
-You get it when you register your application."><span class="description"></span><pre>$_client_token</pre></a></li>
-<li class="property private "><a href="#property__nonce_chars" title="$_nonce_chars :: nonce char list"><span class="description"></span><pre>$_nonce_chars</pre></a></li>
-<li class="property private "><a href="#property__request_secret" title="$_request_secret :: SmartFile Request Secret
+                                                                                                    <li class="class"><a href="../classes/Service_SmartFile_BasicClient.html">Service_SmartFile_BasicClient</a></li>
+                                                    <li class="class"><a href="../classes/Service_SmartFile_OAuthClient.html">Service_SmartFile_OAuthClient</a></li>
+                                                    <li class="class"><a href="../classes/ClientTest.html">ClientTest</a></li>
+                                                    <li class="class"><a href="../classes/BasicClientTest.html">BasicClientTest</a></li>
+                                                    <li class="class"><a href="../classes/OAuthClientTest.html">OAuthClientTest</a></li>
+                                                    <li class="class"><a href="../classes/Service_SmartFile_Client.html">Service_SmartFile_Client</a></li>
+                                                    <li class="class"><a href="../classes/Service_SmartFile_APIException.html">Service_SmartFile_APIException</a></li>
+                                                    <li class="class"><a href="../classes/Service_SmartFile_RequestException.html">Service_SmartFile_RequestException</a></li>
+                                                    <li class="class"><a href="../classes/Service_SmartFile_ResponseException.html">Service_SmartFile_ResponseException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/default.html">\</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\</small>Service_SmartFile_OAuthClient</h1>
+                    <p><em>API client that uses OAuth tokens. Layers a more complex form of
+ authentication useful for 3rd party access on top of the base Client.</em></p>
+                    
+
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Service_SmartFile_OAuthClient.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Service_SmartFile_OAuthClient.html#method_getRequestToken" class="">getRequestToken()</a><br />
+                                                                    <a href="../classes/Service_SmartFile_OAuthClient.html#method_getAuthorizationUrl" class="">getAuthorizationUrl()</a><br />
+                                                                    <a href="../classes/Service_SmartFile_OAuthClient.html#method_getAccessToken" class="">getAccessToken()</a><br />
+                                                                    <a href="../classes/Service_SmartFile_Client.html#method_get" class="">get()</a><br />
+                                                                    <a href="../classes/Service_SmartFile_Client.html#method_put" class="">put()</a><br />
+                                                                    <a href="../classes/Service_SmartFile_Client.html#method_post" class="">post()</a><br />
+                                                                    <a href="../classes/Service_SmartFile_Client.html#method_delete" class="">delete()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Service_SmartFile_OAuthClient.html#property_oauth_base_url" class="">$oauth_base_url</a><br />
+                                                                    <a href="../classes/Service_SmartFile_Client.html#property_api_base_url" class="">$api_base_url</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/Service_SmartFile_Client.html#method_doRequest" class="">doRequest()</a><br />
+                                                                    <a href="../classes/Service_SmartFile_Client.html#method_getBody" class="">getBody()</a><br />
+                                                                    <a href="../classes/Service_SmartFile_Client.html#method_decodeChunked" class="">decodeChunked()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/Service_SmartFile_OAuthClient.html#method__genNonce" class="">_genNonce()</a><br />
+                                                                    <a href="../classes/Service_SmartFile_Client.html#method__request" class="">_request()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Service_SmartFile_OAuthClient.html#property__client_token" class="">$_client_token</a><br />
+                                                                    <a href="../classes/Service_SmartFile_OAuthClient.html#property__client_secret" class="">$_client_secret</a><br />
+                                                                    <a href="../classes/Service_SmartFile_OAuthClient.html#property__request_token" class="">$_request_token</a><br />
+                                                                    <a href="../classes/Service_SmartFile_OAuthClient.html#property__request_secret" class="">$_request_secret</a><br />
+                                                                    <a href="../classes/Service_SmartFile_OAuthClient.html#property__access_token" class="">$_access_token</a><br />
+                                                                    <a href="../classes/Service_SmartFile_OAuthClient.html#property__access_secret" class="">$_access_secret</a><br />
+                                                                    <a href="../classes/Service_SmartFile_OAuthClient.html#property__nonce_chars" class="">$_nonce_chars</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Services.SmartFile.OAuthClient.php.html"><div class="path-wrapper">Services/SmartFile/OAuthClient.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">\SmartFile_Client</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/Service_SmartFile_Client.html">\Service_SmartFile_Client</a></div>
+                                                                                                    <div class="namespace-wrapper">\Service_SmartFile_OAuthClient</div>
+                            </dd>
+
+                        
+                        
+                                                                            <dt>See also</dt>
+                                                                                    <dd><a href="http://pear.php.net/package/SmartFile"><div class="namespace-wrapper">http://pear.php.net/package/SmartFile</div></a></dd>
+                                                    
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                category
+                            </th>
+                            <td>
+                                                                    <p>Web_Services</p>
+
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>Ryan Johnston <a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#x3a;g&#105;&#x74;&#104;&#x75;&#x62;&#64;&#x73;h&#111;&#x70;&#97;&#x6e;&#x64;&#108;&#x65;&#97;&#114;&#x6e;&#46;&#x6e;e&#116;">g&#105;&#x74;&#104;&#x75;&#x62;&#64;&#x73;h&#111;&#x70;&#97;&#x6e;&#x64;&#108;&#x65;&#97;&#114;&#x6e;&#46;&#x6e;e&#116;</a></p>
+
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                copyright
+                            </th>
+                            <td>
+                                                                    <p>2012 SmartFile</p>
+
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                license
+                            </th>
+                            <td>
+                                                                    <p>See LICENSE file</p>
+
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_oauth_base_url" name="property_oauth_base_url" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$oauth_base_url</h3>
+                <pre class="signature">$oauth_base_url : string</pre>
+                <p><em>Smartfile API URL.</em></p>
+                
+
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_api_base_url" name="property_api_base_url" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$api_base_url</h3>
+                <pre class="signature">$api_base_url : string</pre>
+                <p><em>Smartfile API URL.</em></p>
+                
+
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Service_SmartFile_Client.html"><div class="path-wrapper">\Service_SmartFile_Client</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__client_token" name="property__client_token" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_client_token</h3>
+                <pre class="signature">$_client_token : string</pre>
+                <p><em>SmartFile Client Token
+You get it when you register your application.</em></p>
+                
+
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__client_secret" name="property__client_secret" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_client_secret</h3>
+                <pre class="signature">$_client_secret : string</pre>
+                <p><em>SmartFile Client Secret
+You get it when you register your application.</em></p>
+                
+
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__request_token" name="property__request_token" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_request_token</h3>
+                <pre class="signature">$_request_token : string</pre>
+                <p><em>SmartFile Request Token
 This is given to you after you call getRequestToken() and should be saved
-by your application."><span class="description"></span><pre>$_request_secret</pre></a></li>
-<li class="property private "><a href="#property__request_token" title="$_request_token :: SmartFile Request Token
+by your application.</em></p>
+                
+
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__request_secret" name="property__request_secret" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_request_secret</h3>
+                <pre class="signature">$_request_secret : string</pre>
+                <p><em>SmartFile Request Secret
 This is given to you after you call getRequestToken() and should be saved
-by your application."><span class="description"></span><pre>$_request_token</pre></a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="span8">
-<a id="\Service_SmartFile_OAuthClient"></a><ul class="breadcrumb">
-<li>
-<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
-</li>
-<li><a href="../namespaces/global.html">global</a></li>
-<li class="active">
-<span class="divider">\</span><a href="../classes/Service_SmartFile_OAuthClient.html">Service_SmartFile_OAuthClient</a>
-</li>
-</ul>
-<div class="element class">
-<p class="short_description">API client that uses OAuth tokens.</p>
-<div class="details">
-<div class="long_description"><p>Layers a more complex form of
- authentication useful for 3rd party access on top of the base Client.</p></div>
-<table class="table table-bordered">
-<tr>
-<th>category</th>
-<td>Web_Services</td>
-</tr>
-<tr>
-<th>package</th>
-<td><a href="../packages/SmartFile.Client.html">SmartFile_Client</a></td>
-</tr>
-<tr>
-<th>author</th>
-<td><a href="mailto:github@shopandlearn.net">Ryan Johnston</a></td>
-</tr>
-<tr>
-<th>copyright</th>
-<td>2012 SmartFile</td>
-</tr>
-<tr>
-<th>license</th>
-<td><a href="">See LICENSE file</a></td>
-</tr>
-<tr>
-<th>link</th>
-<td><a href="http://pear.php.net/package/SmartFile">http://pear.php.net/package/SmartFile</a></td>
-</tr>
-</table>
-<h3>
-<i class="icon-custom icon-method"></i> Methods</h3>
-<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>Private constructor.</h2>
-<pre>__construct(string $client_token, string $client_secret, string $request_token, string $request_secret) : null</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>Set the oauth token and secret once
-when you instantiate this class.</p></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$client_token</h4>
-<code>string</code><p>Client OAuth Token</p></div>
-<div class="subelement argument">
-<h4>$client_secret</h4>
-<code>string</code><p>Client OAuth Secret</p></div>
-<div class="subelement argument">
-<h4>$request_token</h4>
-<code>string</code><p>OAuth Access Token</p></div>
-<div class="subelement argument">
-<h4>$request_secret</h4>
-<code>string</code><p>OAuth Access Secret</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>null</code></div>
-</div></div>
-</div>
-<a id="method_delete"></a><div class="element clickable method public method_delete" data-toggle="collapse" data-target=".method_delete .collapse">
-<h2>Public wrapper for DELETE requests</h2>
-<pre>delete(string $endpoint, array $data) : array</pre>
-<div class="labels"><span class="label">Inherited</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<table class="table table-bordered"><tr>
-<th>inherited_from</th>
-<td>\Service_SmartFile_Client::delete()</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$endpoint</h4>
-<code>string</code><p>URI of endpoint</p></div>
-<div class="subelement argument">
-<h4>$data</h4>
-<code>array</code><p>DELETE data</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
-<a id="method_doRequest"></a><div class="element clickable method public method_doRequest" data-toggle="collapse" data-target=".method_doRequest .collapse">
-<h2>Override the parent class to add OAuth Authentication here.</h2>
-<pre>doRequest(string $uri, string $method, array $data, string $extra_headers) : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>Actually makes the HTTP request</p></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$uri</h4>
-<code>string</code><p>Url of the Request</p></div>
-<div class="subelement argument">
-<h4>$method</h4>
-<code>string</code><p>Http Method</p></div>
-<div class="subelement argument">
-<h4>$data</h4>
-<code>array</code><p>Http Parameters</p></div>
-<div class="subelement argument">
-<h4>$extra_headers</h4>
-<code>string</code><p>Extra Headers Such as Authentication Information</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
-<a id="method_get"></a><div class="element clickable method public method_get" data-toggle="collapse" data-target=".method_get .collapse">
-<h2>Public wrapper for GET requests</h2>
-<pre>get(string $endpoint, array $data) : array</pre>
-<div class="labels"><span class="label">Inherited</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<table class="table table-bordered"><tr>
-<th>inherited_from</th>
-<td>\Service_SmartFile_Client::get()</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$endpoint</h4>
-<code>string</code><p>URI of endpoint</p></div>
-<div class="subelement argument">
-<h4>$data</h4>
-<code>array</code><p>Get params</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
-<a id="method_getAccessToken"></a><div class="element clickable method public method_getAccessToken" data-toggle="collapse" data-target=".method_getAccessToken .collapse">
-<h2>The final step of the OAuth workflow.</h2>
-<pre>getAccessToken(string $verifier) : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>After this the client can make
-API calls.</p></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$verifier</h4>
-<code>string</code><p>Verifier given to user or passed to your callback.</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
-<a id="method_getAuthorizationUrl"></a><div class="element clickable method public method_getAuthorizationUrl" data-toggle="collapse" data-target=".method_getAuthorizationUrl .collapse">
-<h2>The second step of the OAuth workflow.</h2>
-<pre>getAuthorizationUrl() : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>Send the user to the URL obtained. They will authorize the application to
+by your application.</em></p>
+                
+
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__access_token" name="property__access_token" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_access_token</h3>
+                <pre class="signature">$_access_token : string</pre>
+                <p><em>SmartFile Access Token
+This is given to you after you call getAccessToken() and should be saved
+by your application.</em></p>
+                
+
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__access_secret" name="property__access_secret" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_access_secret</h3>
+                <pre class="signature">$_access_secret : string</pre>
+                <p><em>SmartFile Access Secret
+This is given to you after you call getAccessToken() and should be saved
+by your application.</em></p>
+                
+
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__nonce_chars" name="property__nonce_chars" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_nonce_chars</h3>
+                <pre class="signature">$_nonce_chars : string</pre>
+                <p><em>nonce char list</em></p>
+                
+
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string <span class="argument">$client_token</span>, string <span class="argument">$client_secret</span>, string <span class="argument">$request_token</span>, string <span class="argument">$request_secret</span>) : null</pre>
+                <p><em>Private constructor. Set the oauth token and secret once
+when you instantiate this class.</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$client_token</td>
+                                <td><p>Client OAuth Token</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$client_secret</td>
+                                <td><p>Client OAuth Secret</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$request_token</td>
+                                <td><p>OAuth Access Token</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$request_secret</td>
+                                <td><p>OAuth Access Secret</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    null
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRequestToken" name="method_getRequestToken" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRequestToken()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRequestToken(string <span class="argument">$callback</span>) : string</pre>
+                <p><em>The first step of the OAuth workflow.</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$callback</td>
+                                <td><p>Callback to call once complete</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAuthorizationUrl" name="method_getAuthorizationUrl" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAuthorizationUrl()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAuthorizationUrl() : string</pre>
+                <p><em>The second step of the OAuth workflow.</em></p>
+                <p>Send the user to the URL obtained. They will authorize the application to
 access their account.
-The user will be given a verifier if a callback is not specified.</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>string</code></div>
-</div></div>
+The user will be given a verifier if a callback is not specified.</p>
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAccessToken" name="method_getAccessToken" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAccessToken()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAccessToken(string <span class="argument">$verifier</span>) : array</pre>
+                <p><em>The final step of the OAuth workflow. After this the client can make
+API calls.</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$verifier</td>
+                                <td><p>Verifier given to user or passed to your callback.</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get" name="method_get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get(string <span class="argument">$endpoint</span>, array <span class="argument">$data</span>, array <span class="argument">$extra_headers</span>) : array</pre>
+                <p><em>Public wrapper for GET requests</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$endpoint</td>
+                                <td><p>URI of endpoint</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data</td>
+                                <td><p>Get params</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$extra_headers</td>
+                                <td><p>Extra Headers Such as Authentication Information</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Service_SmartFile_Client.html"><div class="path-wrapper">\Service_SmartFile_Client</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_put" name="method_put" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">put()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">put(string <span class="argument">$endpoint</span>, array <span class="argument">$data</span>, array <span class="argument">$extra_headers</span>) : array</pre>
+                <p><em>Public wrapper for PUT requests</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$endpoint</td>
+                                <td><p>URI of endpoint</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data</td>
+                                <td><p>PUT data</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$extra_headers</td>
+                                <td><p>Extra Headers Such as Authentication Information</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Service_SmartFile_Client.html"><div class="path-wrapper">\Service_SmartFile_Client</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_post" name="method_post" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">post()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">post(string <span class="argument">$endpoint</span>, array <span class="argument">$data</span>, array <span class="argument">$extra_headers</span>) : array</pre>
+                <p><em>Public wrapper for POST requests</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$endpoint</td>
+                                <td><p>URI of endpoint</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data</td>
+                                <td><p>POST data</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$extra_headers</td>
+                                <td><p>Extra Headers Such as Authentication Information</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Service_SmartFile_Client.html"><div class="path-wrapper">\Service_SmartFile_Client</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_delete" name="method_delete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">delete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">delete(string <span class="argument">$endpoint</span>, array <span class="argument">$data</span>, array <span class="argument">$extra_headers</span>) : array</pre>
+                <p><em>Public wrapper for DELETE requests</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$endpoint</td>
+                                <td><p>URI of endpoint</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data</td>
+                                <td><p>DELETE data</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$extra_headers</td>
+                                <td><p>Extra Headers Such as Authentication Information</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Service_SmartFile_Client.html"><div class="path-wrapper">\Service_SmartFile_Client</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_doRequest" name="method_doRequest" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">doRequest()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">doRequest(string <span class="argument">$uri</span>, string <span class="argument">$method</span>, array <span class="argument">$data</span>, array <span class="argument">$extra_headers</span>) : array</pre>
+                <p><em>This function performs an HTTP request and parses the response.</em></p>
+                <p>It raises an exception if the server cannot be contacted or if
+the server returns a status other than 201. Any status other
+that 201 results in the exception receiving the HTTP status in
+addition to the returned error message.</p>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$uri</td>
+                                <td><p>Url of the Request</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$method</td>
+                                <td><p>Http Method</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data</td>
+                                <td><p>Http Parameters</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$extra_headers</td>
+                                <td><p>Extra Headers Such as Authentication Information</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Service_SmartFile_Client.html"><div class="path-wrapper">\Service_SmartFile_Client</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getBody" name="method_getBody" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getBody()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getBody(string <span class="argument">$response</span>) : string</pre>
+                <p><em>This function checks for chunked http response
+and returns body of response.</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$response</td>
+                                <td><p>Http Response to split</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Service_SmartFile_Client.html"><div class="path-wrapper">\Service_SmartFile_Client</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_decodeChunked" name="method_decodeChunked" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">decodeChunked()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">decodeChunked(string <span class="argument">$str</span>) : string</pre>
+                <p><em>This function decodes a chunked http response</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$str</td>
+                                <td><p>Http Response to decode</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Service_SmartFile_Client.html"><div class="path-wrapper">\Service_SmartFile_Client</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__genNonce" name="method__genNonce" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">_genNonce()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_genNonce(int <span class="argument">$length</span>) : string</pre>
+                <p><em>Generate a random string of x chars</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>int</td>
+                                <td>$length</td>
+                                <td><p>Length of resultant string</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__request" name="method__request" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">_request()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_request(string <span class="argument">$uri</span>, string <span class="argument">$method</span>, array <span class="argument">$data</span>, array <span class="argument">$extra_headers</span>) : array</pre>
+                <p><em>Handles retrying failed requests and error handling.</em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$uri</td>
+                                <td><p>URI of endpoint</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$method</td>
+                                <td><p>HTTP method</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$data</td>
+                                <td><p>HTTP request data</p>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$extra_headers</td>
+                                <td><p>Extra Headers Such as Authentication Information</p>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/Service_SmartFile_Client.html"><div class="path-wrapper">\Service_SmartFile_Client</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">OAuthClient.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Services/SmartFile/OAuthClient.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Errors</a></li>
+                                    <li><a href="">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on 
+Warning: date_default_timezone_get(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /usr/local/share/pear/phpDocumentor/vendor/twig/twig/lib/Twig/Extension/Core.php on line 66
+November 21st, 2013 at 16:51.
+                </section>
+            </section>
+        </section>
+    </footer>
 </div>
-<a id="method_getRequestToken"></a><div class="element clickable method public method_getRequestToken" data-toggle="collapse" data-target=".method_getRequestToken .collapse">
-<h2>The first step of the OAuth workflow.</h2>
-<pre>getRequestToken(string $callback) : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$callback</h4>
-<code>string</code><p>Callback to call once complete</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>string</code></div>
-</div></div>
-</div>
-<a id="method_post"></a><div class="element clickable method public method_post" data-toggle="collapse" data-target=".method_post .collapse">
-<h2>Public wrapper for POST requests</h2>
-<pre>post(string $endpoint, array $data) : array</pre>
-<div class="labels"><span class="label">Inherited</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<table class="table table-bordered"><tr>
-<th>inherited_from</th>
-<td>\Service_SmartFile_Client::post()</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$endpoint</h4>
-<code>string</code><p>URI of endpoint</p></div>
-<div class="subelement argument">
-<h4>$data</h4>
-<code>array</code><p>POST data</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
-<a id="method_put"></a><div class="element clickable method public method_put" data-toggle="collapse" data-target=".method_put .collapse">
-<h2>Public wrapper for PUT requests</h2>
-<pre>put(string $endpoint, array $data) : array</pre>
-<div class="labels"><span class="label">Inherited</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<table class="table table-bordered"><tr>
-<th>inherited_from</th>
-<td>\Service_SmartFile_Client::put()</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$endpoint</h4>
-<code>string</code><p>URI of endpoint</p></div>
-<div class="subelement argument">
-<h4>$data</h4>
-<code>array</code><p>PUT data</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
-<a id="method_decodeChunked"></a><div class="element clickable method protected method_decodeChunked" data-toggle="collapse" data-target=".method_decodeChunked .collapse">
-<h2>This function decodes a chunked http response</h2>
-<pre>decodeChunked(string $str) : string</pre>
-<div class="labels"><span class="label">Inherited</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<table class="table table-bordered"><tr>
-<th>inherited_from</th>
-<td>\Service_SmartFile_Client::decodeChunked()</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$str</h4>
-<code>string</code><p>Http Response to decode</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>string</code></div>
-</div></div>
-</div>
-<a id="method__genNonce"></a><div class="element clickable method private method__genNonce" data-toggle="collapse" data-target=".method__genNonce .collapse">
-<h2>Generate a random string of x chars</h2>
-<pre>_genNonce(int $length) : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$length</h4>
-<code>int</code><p>Length of resultant string</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>string</code></div>
-</div></div>
-</div>
-<a id="method__request"></a><div class="element clickable method private method__request" data-toggle="collapse" data-target=".method__request .collapse">
-<h2>Handles retrying failed requests and error handling.</h2>
-<pre>_request(string $uri, string $method, array $data) : array</pre>
-<div class="labels"><span class="label">Inherited</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<table class="table table-bordered"><tr>
-<th>inherited_from</th>
-<td>\Service_SmartFile_Client::_request()</td>
-</tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$uri</h4>
-<code>string</code><p>URI of endpoint</p></div>
-<div class="subelement argument">
-<h4>$method</h4>
-<code>string</code><p>HTTP method</p></div>
-<div class="subelement argument">
-<h4>$data</h4>
-<code>array</code><p>HTTP request data</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
-<h3>
-<i class="icon-custom icon-property"></i> Properties</h3>
-<a id="property_api_base_url"> </a><div class="element clickable property public property_api_base_url" data-toggle="collapse" data-target=".property_api_base_url .collapse">
-<h2></h2>
-<pre>$api_base_url : string</pre>
-<div class="labels"><span class="label">Inherited</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<table class="table table-bordered"><tr>
-<th>inherited_from</th>
-<td>\Service_SmartFile_Client::$$api_base_url</td>
-</tr></table>
-</div></div>
-</div>
-<a id="property_oauth_base_url"> </a><div class="element clickable property public property_oauth_base_url" data-toggle="collapse" data-target=".property_oauth_base_url .collapse">
-<h2></h2>
-<pre>$oauth_base_url : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property__access_secret"> </a><div class="element clickable property private property__access_secret" data-toggle="collapse" data-target=".property__access_secret .collapse">
-<h2></h2>
-<pre>$_access_secret : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property__access_token"> </a><div class="element clickable property private property__access_token" data-toggle="collapse" data-target=".property__access_token .collapse">
-<h2></h2>
-<pre>$_access_token : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property__client_secret"> </a><div class="element clickable property private property__client_secret" data-toggle="collapse" data-target=".property__client_secret .collapse">
-<h2></h2>
-<pre>$_client_secret : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property__client_token"> </a><div class="element clickable property private property__client_token" data-toggle="collapse" data-target=".property__client_token .collapse">
-<h2></h2>
-<pre>$_client_token : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property__nonce_chars"> </a><div class="element clickable property private property__nonce_chars" data-toggle="collapse" data-target=".property__nonce_chars .collapse">
-<h2></h2>
-<pre>$_nonce_chars : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property__request_secret"> </a><div class="element clickable property private property__request_secret" data-toggle="collapse" data-target=".property__request_secret .collapse">
-<h2></h2>
-<pre>$_request_secret : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property__request_token"> </a><div class="element clickable property private property__request_token" data-toggle="collapse" data-target=".property__request_token .collapse">
-<h2></h2>
-<pre>$_request_token : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row"><footer class="span12">
-            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-06-18T16:34:23-04:00.<br></footer></div>
-</div>
+
 </body>
 </html>
