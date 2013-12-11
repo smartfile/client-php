@@ -108,6 +108,16 @@ content other than the expected JSON return value, then a file-like object is
 returned.
 
 
+To download a file::
+
+   $client = new Service_SmartFile_BasicClient(API_KEY, API_PWD);
+   // Bypass _request() called by get() which does json decode
+   $response = $client->doRequest('/path/data/test.jpg', 'get');
+   // Removed chunks in response
+   $response = $client->getBody($response);
+
+
+
 Tasks
 -----
 
