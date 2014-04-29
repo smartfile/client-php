@@ -51,24 +51,23 @@ define("API_PWD", "api-pass");
 
 
 /**
- * This function makes the file list API call. It uses the BasicClient
+ * This function makes the directory create API call. It uses the BasicClient
  * class to handle the transport. Additional API calls could be supported
  * simply by writing additional wrappers that create the $data array and
  * use BasicClient to do the grunt work.
  *
  * @return null
  */
-function listFilesWithChildren()
+function createDirectory()
 {
     $data = array(
-        'children' => 'on'
+        'path' => '/testdir2'
     );
     $client = new Service_SmartFile_BasicClient(API_KEY, API_PWD);
-    $response = $client->get('/path/info/', $data);
+    $response = $client->post('/path/oper/create/', $data);
     var_dump($response);
 }
 
-listFilesWithChildren();
-
+createDirectory();
 
 ?>
