@@ -163,6 +163,11 @@ class Service_SmartFile_Client
             $extra_headers_str .= $key . ": " . $value . "\r\n";
         }
 
+        $getdata_str = ((strtolower($method) == 'get' && count($data)) ? '?' : '');
+        if (strtolower($method) == 'get') {
+            $getdata_str .= $data;
+        }
+
         // We use fsockopen to perform our HTTP request as that is the
         // most compatible way of doing so. This method should work on
         // just about any PHP installation and does not require cURL
@@ -174,10 +179,10 @@ class Service_SmartFile_Client
             );
         }
         fputs(
-            $fp,  strtoupper($method) . ' ' . $url_parts['path'] . " HTTP/1.1\r\n" .
+            $fp,  strtoupper($method) . ' ' . $url_parts['path']. $getdata_str . " HTTP/1.1\r\n" .
             'Host: ' . $host_header . "\r\n" .
             "User-Agent: SmartFile PHP API client v2.1\r\n" .
-            'Content-Length: ' . strlen($data) . "\r\n" .
+            (strtolower($method) == 'post' ? 'Content-Length: ' . strlen($data) . "\r\n" : '') .
             $extra_headers_str .
             "Connection: close\r\n\r\n"
         );
