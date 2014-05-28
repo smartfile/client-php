@@ -39,7 +39,7 @@ Choose between Basic and OAuth authentication methods, then continue to use the 
 
 Some of the details this library takes care of are:
 
-* Encoding and decoding of parameters and return values. You deal with Python
+* Encoding and decoding of parameters and return values. You deal with PHP
   types only.
 * URLs, using the API version, endpoint, and object ID, the URL is created for
   you.
