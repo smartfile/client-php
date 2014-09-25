@@ -149,6 +149,8 @@ class Service_SmartFile_Client
                 "\r\n--$boundary--";
         } else {
             $data = http_build_query($data);
+            // SmartFile API does not use the [0], [1], [2] style parameters
+            $data = preg_replace('/%5B[0-9]+%5D/simU', '', $data); 
         }
 
         // Add a default content type and convert headers into string.

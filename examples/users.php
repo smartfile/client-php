@@ -76,6 +76,27 @@ function createUser($fullname, $username, $password, $email)
 }
 
 /**
+ * This function makes the Group add API call. It uses the BasicClient
+ * class to handle the transport. Additional API calls could be supported
+ * simply by writing additional wrappers that create the $data array and
+ * use BasicClient to do the grunt work.
+ *
+ * @param string $groupname Group Full Name
+ * @param string $users Array of usernames
+ *
+ * @return null
+ */
+function createGroup($groupname, $users)
+{
+    $data = array(
+        'name'  => $groupname,
+        'users' => $users,
+    );
+    $client = new Service_SmartFile_BasicClient(API_KEY, API_PWD);
+    $response = $client->post('/group/', $data);
+}
+
+/**
  * This function makes the User delete API call. It uses the BasicClient
  * class to handle the transport. Additional API calls could be supported
  * simply by writing additional wrappers that create the $data array and
@@ -96,6 +117,7 @@ function deleteUser($username)
 try
 {
     createUser('Ryan Johnston', 'freak3dot2', 'password', 'github@shopandlearn.net');
+    // createGroup('newgroup', ['user1', 'user2', 'user3']);
 }
 catch (Exception $e) {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
