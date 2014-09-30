@@ -136,21 +136,24 @@ class Service_SmartFile_Client
         // Convert data, which could have a resource, into string to send.
         if (is_null($data)) {
             $data = '';
-        } elseif (is_resource(array_values($data)[0])) {
-            $boundary = "----------------------------" . uniqid();
-            $content_type = "multipart/form-data; boundary=$boundary";
-            $filename = array_keys($data)[0];
-            $rh = array_values($data)[0];
-            $data = "--$boundary\r\n" .
-                "Content-Disposition: form-data; " .
-                "name=\"$filename\"; filename=\"$filename\"\r\n" .
-                "Content-Type: application/octet-stream\r\n\r\n" .
-                fread($rh, fstat($rh)[size]) .
-                "\r\n--$boundary--";
         } else {
-            $data = http_build_query($data);
-            // SmartFile API does not use the [0], [1], [2] style parameters
-            $data = preg_replace('/%5B[0-9]+%5D/simU', '', $data); 
+            $aryData = array_values($data);
+            if (is_resource($aryData[0])) {
+                $boundary = "----------------------------" . uniqid();
+                $content_type = "multipart/form-data; boundary=$boundary";
+                $filename = array_keys($data)[0];
+                $rh = array_values($data)[0];
+                $data = "--$boundary\r\n" .
+                    "Content-Disposition: form-data; " .
+                    "name=\"$filename\"; filename=\"$filename\"\r\n" .
+                    "Content-Type: application/octet-stream\r\n\r\n" .
+                    fread($rh, fstat($rh)[size]) .
+                    "\r\n--$boundary--";
+            } else {
+                $data = http_build_query($data);
+                // SmartFile API does not use the [0], [1], [2] style parameters
+                $data = preg_replace('/%5B[0-9]+%5D/simU', '', $data); 
+            }
         }
 
         // Add a default content type and convert headers into string.
