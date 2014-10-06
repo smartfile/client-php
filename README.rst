@@ -123,39 +123,3 @@ Tasks
 Operations are long-running jobs that are not executed within the time frame
 of an API call. For such operations, a task is created, and the API can be used
 to poll the status of the task.
-
-
-Synchronization
----------------
-
-If you have many files that you wish to keep synchronized between a number of
-computer systems and SmartFile, the sync API can help. The sync API is an
-implementation of the excellent and popular rsync delta algorithm. It is
-completely compatible with the file formats used in librsync version 0.9.7.
-
-The `Rsync algorithm`_ provides a means to synchronize two files by transferring
-just the parts that differ, while retaining the parts that are the same. This
-allows files to be quickly and efficiently synchronized. The rsync algorithm
-is very popular and widely deployed. The implementation in librsync is very
-high quality Open Source software.
-
-Once you have librsync available, synchronizing files using the SmartFile sync
-API is very simple. The API exposes three calls, corresponding to the three
-steps of the algorithm.
-
-1. Signature (destination)
-2. Delta (source)
-3. Patch (destination)
-
-Depending on the direction of synchronization, source and destination may be
-either your local machine or the SmartFile API. In either case, the steps are
-performed in the same order.
-
-The SmartFile API client provides a simple ``SyncClient`` class that
-demonstrates synchronizing files in either direction. An example of it's usage
-follows.
-
-
-.. _SmartFile: http://www.smartfile.com/
-.. _Read more: http://www.smartfile.com/open-source.html
-.. _Rsync algorithm: http://en.wikipedia.org/wiki/Rsync#Algorithm
