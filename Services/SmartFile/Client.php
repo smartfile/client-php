@@ -147,7 +147,7 @@ class Service_SmartFile_Client
                     "Content-Disposition: form-data; " .
                     "name=\"$filename\"; filename=\"$filename\"\r\n" .
                     "Content-Type: application/octet-stream\r\n\r\n" .
-                    fread($rh, fstat($rh)[size]) .
+                    fread($rh, fstat($rh)['size']) .
                     "\r\n--$boundary--";
             } else {
                 $data = http_build_query($data);
