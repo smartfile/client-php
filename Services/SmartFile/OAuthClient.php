@@ -182,7 +182,7 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
             '",oauth_timestamp="' . time() . '",oauth_signature_method="PLAINTEXT",'.
             'oauth_version="1.0",oauth_signature="' . $this->_client_secret . '&' .
             $this->_access_secret . '"';
-        $extra_headers = $extra_headers . 'Authorization: OAuth ' . $auth . "\r\n";
+        $extra_headers['Authorization'] = ' OAuth ' . $auth . "\r\n";
 
         return parent::doRequest($uri, $method, $data, $extra_headers);
     }
