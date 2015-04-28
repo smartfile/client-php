@@ -64,7 +64,7 @@ function createDirectory()
         'path' => '/testdir2'
     );
     $client = new Service_SmartFile_BasicClient(API_KEY, API_PWD);
-    $response = $client->post('/path/oper/create/', $data);
+    $response = $client->post('/path/oper/mkdir/', $data);
     var_dump($response);
 }
 
