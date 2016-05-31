@@ -70,7 +70,7 @@ class Service_SmartFile_Client
      *
      * @return string
      */
-    protected function getBody($response)
+    public function getBody($response)
     {
         // strip the HTTP headers:
         $sep = strpos($response, "\r\n\r\n");
@@ -152,7 +152,7 @@ class Service_SmartFile_Client
             } else {
                 $data = http_build_query($data);
                 // SmartFile API does not use the [0], [1], [2] style parameters
-                $data = preg_replace('/%5B[0-9]+%5D/simU', '', $data); 
+                $data = preg_replace('/%5B[0-9]+%5D/simU', '', $data);
             }
         }
 
@@ -277,6 +277,14 @@ class Service_SmartFile_Client
     public function post($endpoint, $data=null, $extra_headers=array())
     {
         return $this->_request($endpoint, 'post', $data, $extra_headers);
+    }
+
+    public function upload($filename)
+    {
+        $rh = fopen($filename, "rb");
+        $this->post("/path/data/", array($filename => $rh));
+        fclose($rh);
+        return $this;
     }
 
     /**

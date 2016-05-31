@@ -102,10 +102,10 @@ Uploading and downloading files is supported.
 
 To upload a file::
 
-    $client = new Service_SmartFile_BasicClient(API_KEY, API_PWD);
-    $rh = fopen("/etc/motd", "rb");
-    $client->post("/path/data/", array("motd" => $rh));
-    fclose($rh);
+    include_once 'Services/SmartFile/BasicClient.php';
+    $api = new Service_SmartFile_BasicClient('**********', '**********');
+
+    $api->upload('file.txt');
 
 Downloading is automatic, if the ``'Content-Type'`` header indicates
 content other than the expected JSON return value, then a file-like object is
@@ -114,9 +114,13 @@ returned.
 
 To download a file::
 
-   $client = new Service_SmartFile_BasicClient(API_KEY, API_PWD);
-   // Bypass _request() called by get() which does json decode
-   $response = $client->doRequest('/path/data/test.jpg', 'get');
+    include_once 'Services/SmartFile/BasicClient.php';
+    $api = new Service_SmartFile_BasicClient('**********', '**********');
+
+    $response = $api->doRequest('/path/data/file.pdf', 'get');
+    $myfile = $api->getBody($response);
+    file_put_contents('file.pdf', $myfile);
+
 
 
 
