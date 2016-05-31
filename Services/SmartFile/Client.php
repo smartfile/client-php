@@ -70,7 +70,7 @@ class Service_SmartFile_Client
      *
      * @return string
      */
-    public function getBody($response)
+    protected function getBody($response)
     {
         // strip the HTTP headers:
         $sep = strpos($response, "\r\n\r\n");
@@ -251,6 +251,13 @@ class Service_SmartFile_Client
         return $this->_request($endpoint, 'get', $data, $extra_headers);
     }
 
+    public function download($file_to_be_downloaded)
+    {
+        $response = $this->doRequest('/path/data/' . $file_to_be_downloaded, 'get');
+        $removeheaders = $this->getBody($response);
+        return file_put_contents($file_to_be_downloaded, $removeheaders);
+    }
+
     /**
      * Public wrapper for PUT requests
      *
@@ -279,10 +286,10 @@ class Service_SmartFile_Client
         return $this->_request($endpoint, 'post', $data, $extra_headers);
     }
 
-    public function upload($filename)
+    public function upload($file_to_be_uploaded)
     {
-        $rh = fopen($filename, "rb");
-        $this->post("/path/data/", array($filename => $rh));
+        $rh = fopen($file_to_be_uploaded, "rb");
+        $this->post("/path/data/", array($file_to_be_uploaded => $rh));
         fclose($rh);
         return $this;
     }

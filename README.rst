@@ -117,11 +117,7 @@ To download a file::
     include_once 'Services/SmartFile/BasicClient.php';
     $api = new Service_SmartFile_BasicClient('**********', '**********');
 
-    $response = $api->doRequest('/path/data/file.pdf', 'get');
-    $myfile = $api->getBody($response);
-    file_put_contents('file.pdf', $myfile);
-
-
+    $api->download('myfile.txt');
 
 
 Tasks
