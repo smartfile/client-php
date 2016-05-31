@@ -66,11 +66,11 @@ sample PHP code::
     include_once 'Services/SmartFile/OAuthClient.php';
     $api = new Service_SmartFile_OAuthClient('**********', '**********');
     // Be sure to only call each method once for each OAuth login
-    
+
     // If you want to change the app url to your custom domain.
     //$api->api_base_url= 'https://mysite.smartfile.com/api/2';
     //$api->oauth_base_url = str_replace('/api/2', '', $api->api_base_url);
-    
+
     // This is the first step with the client, which should be left alone
     $api->getRequestToken();
 
@@ -117,7 +117,6 @@ To download a file::
    $client = new Service_SmartFile_BasicClient(API_KEY, API_PWD);
    // Bypass _request() called by get() which does json decode
    $response = $client->doRequest('/path/data/test.jpg', 'get');
-
 
 
 
