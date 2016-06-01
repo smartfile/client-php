@@ -183,6 +183,7 @@ class Service_SmartFile_Client
                 'Error contacting Server: ' . $errstr
             );
         }
+
         fputs(
             $fp,  strtoupper($method) . ' ' . $url_parts['path']. $getdata_str . " HTTP/1.1\r\n" .
             'Host: ' . $host_header . "\r\n" .
@@ -221,7 +222,7 @@ class Service_SmartFile_Client
         $headers = substr($response, 0, $sep);
         list($ignored, $http_status, $ignored) = split(' ', $headers);
 
-        $response = $this->getBody($response);
+        // $response = $this->getBody($response);
 
         $method = strtolower($method);
         if (($method == 'get' && $http_status != 200)
@@ -303,9 +304,11 @@ class Service_SmartFile_Client
      *
      * @return array
      */
-    public function delete($endpoint, $data=null, $extra_headers=array())
+    public function delete($file_to_be_deleted)
     {
-        return $this->_request($endpoint, 'delete', $data, $extra_headers);
+        $this->post('/path/oper/remove/', array('path' => $file_to_be_deleted));
+        return $this;
+
     }
 }
 

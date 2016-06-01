@@ -127,6 +127,13 @@ Operations are long-running jobs that are not executed within the time frame
 of an API call. For such operations, a task is created, and the API can be used
 to poll the status of the task.
 
+To delete a file::
+
+    include_once 'Services/SmartFile/BasicClient.php';
+    $api = new Service_SmartFile_BasicClient('**********', '**********');
+    
+    $api->delete("/file.txt");
+
 
 .. _SmartFile: http://www.smartfile.com/
 .. _Read more: http://www.smartfile.com/open-source.html
