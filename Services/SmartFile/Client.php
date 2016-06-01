@@ -310,6 +310,11 @@ class Service_SmartFile_Client
         return $this;
 
     }
+
+    public function move($file_to_be_moved, $destination_folder)
+    {
+        $this->post('/path/oper/move/', array('src' => $file_to_be_moved, 'dst' => $destination_folder));
+    }
 }
 
 ?>

@@ -131,8 +131,17 @@ To delete a file::
 
     include_once 'Services/SmartFile/BasicClient.php';
     $api = new Service_SmartFile_BasicClient('**********', '**********');
-    
-    $api->delete("/file.txt");
+
+    $api->delete("file.txt");
+
+
+To move a file::
+
+    include_once 'Services/SmartFile/BasicClient.php';
+    $api = new Service_SmartFile_BasicClient('**********', '**********');
+
+    $api->move('file.txt', '/myFolder');
+
 
 
 .. _SmartFile: http://www.smartfile.com/
