@@ -2,7 +2,7 @@
 
 require_once '../Services/SmartFile/BasicClient.php';
 
-$api = new Service_SmartFile_BasicClient('*********', '***********');
+$api = new Service_SmartFile_BasicClient('****', '********');
 
 /**
  * Test class for Services_SmartFile_BasicClient upload, download, move, delete
@@ -51,7 +51,7 @@ class BasicClientTest extends PHPUnit_Framework_TestCase
         $file_info_moved = $api->get('/path/info/myfile.txt');
         return $file_info_moved;
 
-        $this->assertFalse($file_info, $file_info_real);
+        $this->assertFalse($file_info_original, $file_info_moved);
     }
 
 }
