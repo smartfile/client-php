@@ -1,3 +1,5 @@
 main.php
 
 venv/
+
+tests/myfile.txt

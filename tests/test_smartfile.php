@@ -2,6 +2,8 @@
 
 require_once '../Services/SmartFile/BasicClient.php';
 
+$api = new Service_SmartFile_BasicClient('*********', '***********');
+
 /**
  * Test class for Services_SmartFile_BasicClient upload, download, move, delete
  */
@@ -16,9 +18,7 @@ class BasicClientTest extends PHPUnit_Framework_TestCase
 
     public function testUpload()
     {
-        include_once '../Services/SmartFile/BasicClient.php';
-        $api = new Service_SmartFile_BasicClient('*********', '**********');
-
+        GLOBAL $api;
         $api->upload('myfile.txt');
         $file_info = $api->get('/path/info/myfile.txt');
         return $file_info;
@@ -30,14 +30,28 @@ class BasicClientTest extends PHPUnit_Framework_TestCase
 
     public function testDownload()
     {
-        include_once '../Services/SmartFile/BasicClient.php';
-        $api = new Service_SmartFile_BasicClient('*********', '**********');
+        GLOBAL $api;
 
         $myfile = fopen('myfile.txt', 'rb');
 
         $api->download('myfile.txt');
         $f = fopen('myfile.txt', 'rb');
         $this->assertEquals(fgets($f), fgets($myfile));
+    }
+
+    public function testMove()
+    {
+        GLOBAL $api;
+
+        $api->move('myfile.txt', '/newFolder/');
+
+        $file_info_original = $api->get('/path/info/myfile.txt');
+        return $file_info_original;
+
+        $file_info_moved = $api->get('/path/info/myfile.txt');
+        return $file_info_moved;
+
+        $this->assertFalse($file_info, $file_info_real);
     }
 
 }
