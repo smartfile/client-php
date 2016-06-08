@@ -17,16 +17,27 @@ class BasicClientTest extends PHPUnit_Framework_TestCase
     public function testUpload()
     {
         include_once '../Services/SmartFile/BasicClient.php';
-        $api = new Service_SmartFile_BasicClient('*******', '*******');
+        $api = new Service_SmartFile_BasicClient('*********', '**********');
 
         $api->upload('myfile.txt');
-        $thinger = $api->get('/path/info/myfile.txt');
-        return $thinger;
+        $file_info = $api->get('/path/info/myfile.txt');
+        return $file_info;
 
         $sizefile = filesize('myfile.txt');
-        // echo $sizefile;
-        $this->assertEquals($thinger['size'], $sizefile);
+        $this->assertEquals($file_info['size'], $sizefile);
 
+    }
+
+    public function testDownload()
+    {
+        include_once '../Services/SmartFile/BasicClient.php';
+        $api = new Service_SmartFile_BasicClient('*********', '**********');
+
+        $myfile = fopen('myfile.txt', 'rb');
+
+        $api->download('myfile.txt');
+        $f = fopen('myfile.txt', 'rb');
+        $this->assertEquals(fgets($f), fgets($myfile));
     }
 
 }
