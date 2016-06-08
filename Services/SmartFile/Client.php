@@ -252,6 +252,13 @@ class Service_SmartFile_Client
         return $this->_request($endpoint, 'get', $data, $extra_headers);
     }
 
+    /**
+     * Public wrapper for DOWNLOAD requests
+     *
+     * @param string $file_to_be_downloaded file client will download
+     *
+     * @return array
+     */
     public function download($file_to_be_downloaded)
     {
         $response = $this->doRequest('/path/data/' . $file_to_be_downloaded, 'get');
@@ -287,6 +294,13 @@ class Service_SmartFile_Client
         return $this->_request($endpoint, 'post', $data, $extra_headers);
     }
 
+    /**
+     * Public wrapper for D requests
+     *
+     * @param string $file_to_be_uploaded file client will upload
+     *
+     * @return array
+     */
     public function upload($file_to_be_uploaded)
     {
         $rh = fopen($file_to_be_uploaded, "rb");
@@ -298,9 +312,7 @@ class Service_SmartFile_Client
     /**
      * Public wrapper for DELETE requests
      *
-     * @param string $endpoint URI of endpoint
-     * @param array  $data     DELETE data
-     * @param array  $extra_headers Extra Headers Such as Authentication Information
+     * @param string $file_to_be_deleted file client will delete
      *
      * @return array
      */
@@ -311,9 +323,18 @@ class Service_SmartFile_Client
 
     }
 
+    /**
+     * Public wrapper for MOVE requests
+     *
+     * @param string $file_to_be_moved file client will download
+     * @param string $destination_folder the folder the client is moving their file to
+     *
+     * @return array
+     */
     public function move($file_to_be_moved, $destination_folder)
     {
         $this->post('/path/oper/move/', array('src' => $file_to_be_moved, 'dst' => $destination_folder));
+        return $this;
     }
 }
 
