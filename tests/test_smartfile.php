@@ -3,7 +3,7 @@
 require_once '../Services/SmartFile/BasicClient.php';
 
 include_once '../Services/SmartFile/BasicClient.php';
-$api = new Service_SmartFile_BasicClient('I8mHHE6jgTrvVVfc3ixnWhDrskNrIi', '0Z5qUNPthp7XYmBhX8H1N54QmVlNcm');
+$api = new Service_SmartFile_BasicClient('*****', '*****');
 
 /**
  * Test class for Services_SmartFile_BasicClient upload, download, move, delete
