@@ -6,6 +6,11 @@ include_once '../Services/SmartFile/BasicClient.php';
 $API_KEY = getenv('API_KEY');
 $API_PASS = getenv('API_PASS');
 
+if ($API_KEY == NULL || $API_PASS == NULL)
+{
+    throw new Service_SmartFile_RequestException('Must have API key and password.');
+}
+
 $api = new Service_SmartFile_BasicClient($API_KEY, $API_PASS);
 
 /**
