@@ -59,6 +59,8 @@ sample PHP code::
 OAuth Authentication
 --------------------
 
+This section is currently under construction and may not work as expected.
+
 Authentication using OAuth authentication is bit more complicated, as it involves tokens and secrets.
 
 sample PHP code::

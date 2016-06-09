@@ -1,3 +1,4 @@
+
 <?php
 /**
  * SmartFile PHP SDK
@@ -209,6 +210,7 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
             'oauth_timestamp' => time(),
             'oauth_consumer_key' => $this->_client_token,
             'oauth_signature_method' => 'PLAINTEXT',
+            //'oauth_signature_method' => 'HMAC-SHA1',
             'oauth_signature' => $this->_client_secret . '&'
         );
         if ($callback) {
@@ -217,6 +219,7 @@ Class Service_SmartFile_OAuthClient extends Service_SmartFile_Client
         }
         $result = parent::doRequest($uri, 'post', $data);
         $result = $this->getBody($result);
+        echo $result;
         if ($result == 'Could not verify OAuth request.') {
             throw new Service_SmartFile_APIException(
                 'Could not verify OAuth request.'
