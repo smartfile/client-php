@@ -22,6 +22,13 @@ class BasicClientTest extends PHPUnit_Framework_TestCase
     public function testUpload()
     {
         GLOBAL $api;
+
+        // creates the file to test
+        $myfile = fopen('myfile.txt', 'w');
+        $txt = 'this is a test file';
+        fwrite($myfile, $txt);
+        fclose($myfile);
+
         $api->upload('myfile.txt');
         $file_info = $api->get('/path/info/myfile.txt');
         return $file_info;
