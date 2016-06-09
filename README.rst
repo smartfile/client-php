@@ -53,7 +53,7 @@ sample PHP code::
 
        include_once 'Services/SmartFile/BasicClient.php';
        $api = new Service_SmartFile_BasicClient('**********', '**********');
-       $api->get('/ping');
+       echo $api->doRequest('/ping/', 'get');
 
 
 OAuth Authentication

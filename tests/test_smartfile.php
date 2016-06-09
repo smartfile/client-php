@@ -1,7 +1,6 @@
 <?php
 
 require_once '../Services/SmartFile/BasicClient.php';
-
 include_once '../Services/SmartFile/BasicClient.php';
 $api = new Service_SmartFile_BasicClient('*****', '*****');
 
