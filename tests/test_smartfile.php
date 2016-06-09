@@ -2,19 +2,17 @@
 
 require_once '../Services/SmartFile/BasicClient.php';
 include_once '../Services/SmartFile/BasicClient.php';
-$api = new Service_SmartFile_BasicClient('*****', '*****');
+
+$API_KEY = getenv('API_KEY');
+$API_PASS = getenv('API_PASS');
+
+$api = new Service_SmartFile_BasicClient($API_KEY, $API_PASS);
 
 /**
  * Test class for Services_SmartFile_BasicClient upload, download, move, delete
  */
 class BasicClientTest extends PHPUnit_Framework_TestCase
 {
-
-
-    // public function testOne()
-    // {
-    //     $this->assertTrue(true);
-    // }
 
     public function testUpload()
     {
@@ -25,7 +23,6 @@ class BasicClientTest extends PHPUnit_Framework_TestCase
 
         $sizefile = filesize('myfile.txt');
         $this->assertEquals($file_info['size'], $sizefile);
-
     }
 
     public function testDownload()
@@ -68,6 +65,5 @@ class BasicClientTest extends PHPUnit_Framework_TestCase
 
         $this->assertFalse($file_info_original['url'], $file_info['url']);
     }
-
 }
 ?>
