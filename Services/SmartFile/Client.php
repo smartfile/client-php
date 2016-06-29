@@ -173,17 +173,13 @@ class Service_SmartFile_Client
             $getdata_str .= $data;
         }
 
-        // We use fsockopen to perform our HTTP request as that is the
-        // most compatible way of doing so. This method should work on
-        // just about any PHP installation and does not require cURL
-        // or any other HTTP extensions.
+
         $fp = @fsockopen($url_parts['host'], $port, $errno, $errstr, 30);
         if (!$fp) {
             throw new Service_SmartFile_RequestException(
                 'Error contacting Server: ' . $errstr
             );
         }
-
         fputs(
             $fp,  strtoupper($method) . ' ' . $url_parts['path']. $getdata_str . " HTTP/1.1\r\n" .
             'Host: ' . $host_header . "\r\n" .
@@ -203,6 +199,7 @@ class Service_SmartFile_Client
         return $response;
     }
 
+
     /**
      * Handles retrying failed requests and error handling.
      *
@@ -220,7 +217,7 @@ class Service_SmartFile_Client
         // Get Status from headers:
         $sep = strpos($response, "\r\n");
         $headers = substr($response, 0, $sep);
-        list($ignored, $http_status, $ignored) = split(' ', $headers);
+        list($ignored, $http_status, $ignored) = explode(' ', $headers);
 
         // $response = $this->getBody($response);
 
@@ -316,7 +313,7 @@ class Service_SmartFile_Client
      *
      * @return array
      */
-    public function delete($file_to_be_deleted)
+    public function remove($file_to_be_deleted)
     {
         $this->post('/path/oper/remove/', array('path' => $file_to_be_deleted));
         return $this;
