@@ -67,7 +67,7 @@ class BasicClientTest extends PHPUnit_Framework_TestCase
     {
         GLOBAL $api;
 
-        $api->delete('/newFolder/myfile.txt/');
+        $api->remove('/newFolder/myfile.txt/');
 
         $file_info_original = $api->get('/path/info/newFolder/myfile.txt');
         return $file_info_original;
