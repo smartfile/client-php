@@ -144,7 +144,10 @@ To move a file::
 
     $api->move('file.txt', '/myFolder');
 
-
+Running Tests
+-----
+To run the test_smartfile.php test, from within the tests folder run::
+    API_KEY="**********" API_PASS="**********" phpunit test_smartfile.php
 
 .. _SmartFile: http://www.smartfile.com/
 .. _Read more: http://www.smartfile.com/open-source.html
