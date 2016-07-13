@@ -53,11 +53,13 @@ sample PHP code::
 
        include_once 'Services/SmartFile/BasicClient.php';
        $api = new Service_SmartFile_BasicClient('**********', '**********');
-       $api->get('/ping');
+       echo $api->doRequest('/ping/', 'get');
 
 
 OAuth Authentication
 --------------------
+
+This section is currently under construction and may not work as expected.
 
 Authentication using OAuth authentication is bit more complicated, as it involves tokens and secrets.
 
@@ -66,11 +68,11 @@ sample PHP code::
     include_once 'Services/SmartFile/OAuthClient.php';
     $api = new Service_SmartFile_OAuthClient('**********', '**********');
     // Be sure to only call each method once for each OAuth login
-    
+
     // If you want to change the app url to your custom domain.
     //$api->api_base_url= 'https://mysite.smartfile.com/api/2';
     //$api->oauth_base_url = str_replace('/api/2', '', $api->api_base_url);
-    
+
     // This is the first step with the client, which should be left alone
     $api->getRequestToken();
 
@@ -102,10 +104,10 @@ Uploading and downloading files is supported.
 
 To upload a file::
 
-    $client = new Service_SmartFile_BasicClient(API_KEY, API_PWD);
-    $rh = fopen("/etc/motd", "rb");
-    $client->post("/path/data/", array("motd" => $rh));
-    fclose($rh);
+    include_once 'Services/SmartFile/BasicClient.php';
+    $api = new Service_SmartFile_BasicClient('**********', '**********');
+
+    $api->upload('file.txt');
 
 Downloading is automatic, if the ``'Content-Type'`` header indicates
 content other than the expected JSON return value, then a file-like object is
@@ -114,11 +116,10 @@ returned.
 
 To download a file::
 
-   $client = new Service_SmartFile_BasicClient(API_KEY, API_PWD);
-   // Bypass _request() called by get() which does json decode
-   $response = $client->doRequest('/path/data/test.jpg', 'get');
+    include_once 'Services/SmartFile/BasicClient.php';
+    $api = new Service_SmartFile_BasicClient('**********', '**********');
 
-
+    $api->download('myfile.txt');
 
 
 Tasks
@@ -128,6 +129,27 @@ Operations are long-running jobs that are not executed within the time frame
 of an API call. For such operations, a task is created, and the API can be used
 to poll the status of the task.
 
+To delete a file::
+
+    include_once 'Services/SmartFile/BasicClient.php';
+    $api = new Service_SmartFile_BasicClient('**********', '**********');
+
+    $api->delete("file.txt");
+
+
+To move a file::
+
+    include_once 'Services/SmartFile/BasicClient.php';
+    $api = new Service_SmartFile_BasicClient('**********', '**********');
+
+    $api->move('file.txt', '/myFolder');
+
+Running Tests
+-----
+
+To run the test_smartfile.php test, from within the tests folder run::
+
+    API_KEY="**********" API_PASS="**********" phpunit test_smartfile.php
 
 .. _SmartFile: http://www.smartfile.com/
 .. _Read more: http://www.smartfile.com/open-source.html

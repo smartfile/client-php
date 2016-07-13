@@ -152,7 +152,7 @@ class Service_SmartFile_Client
             } else {
                 $data = http_build_query($data);
                 // SmartFile API does not use the [0], [1], [2] style parameters
-                $data = preg_replace('/%5B[0-9]+%5D/simU', '', $data); 
+                $data = preg_replace('/%5B[0-9]+%5D/simU', '', $data);
             }
         }
 
@@ -173,10 +173,7 @@ class Service_SmartFile_Client
             $getdata_str .= $data;
         }
 
-        // We use fsockopen to perform our HTTP request as that is the
-        // most compatible way of doing so. This method should work on
-        // just about any PHP installation and does not require cURL
-        // or any other HTTP extensions.
+
         $fp = @fsockopen($url_parts['host'], $port, $errno, $errstr, 30);
         if (!$fp) {
             throw new Service_SmartFile_RequestException(
@@ -202,6 +199,7 @@ class Service_SmartFile_Client
         return $response;
     }
 
+
     /**
      * Handles retrying failed requests and error handling.
      *
@@ -219,9 +217,9 @@ class Service_SmartFile_Client
         // Get Status from headers:
         $sep = strpos($response, "\r\n");
         $headers = substr($response, 0, $sep);
-        list($ignored, $http_status, $ignored) = split(' ', $headers);
+        list($ignored, $http_status, $ignored) = explode(' ', $headers);
 
-        $response = $this->getBody($response);
+        // $response = $this->getBody($response);
 
         $method = strtolower($method);
         if (($method == 'get' && $http_status != 200)
@@ -249,6 +247,20 @@ class Service_SmartFile_Client
     public function get($endpoint, $data=null, $extra_headers=array())
     {
         return $this->_request($endpoint, 'get', $data, $extra_headers);
+    }
+
+    /**
+     * Public wrapper for DOWNLOAD requests
+     *
+     * @param string $file_to_be_downloaded file client will download
+     *
+     * @return array
+     */
+    public function download($file_to_be_downloaded)
+    {
+        $response = $this->doRequest('/path/data/' . $file_to_be_downloaded, 'get');
+        $removeheaders = $this->getBody($response);
+        return file_put_contents($file_to_be_downloaded, $removeheaders);
     }
 
     /**
@@ -280,17 +292,46 @@ class Service_SmartFile_Client
     }
 
     /**
-     * Public wrapper for DELETE requests
+     * Public wrapper for D requests
      *
-     * @param string $endpoint URI of endpoint
-     * @param array  $data     DELETE data
-     * @param array  $extra_headers Extra Headers Such as Authentication Information
+     * @param string $file_to_be_uploaded file client will upload
      *
      * @return array
      */
-    public function delete($endpoint, $data=null, $extra_headers=array())
+    public function upload($file_to_be_uploaded)
     {
-        return $this->_request($endpoint, 'delete', $data, $extra_headers);
+        $rh = fopen($file_to_be_uploaded, "rb");
+        $this->post("/path/data/", array($file_to_be_uploaded => $rh));
+        fclose($rh);
+        return $this;
+    }
+
+    /**
+     * Public wrapper for DELETE requests
+     *
+     * @param string $file_to_be_deleted file client will delete
+     *
+     * @return array
+     */
+    public function remove($file_to_be_deleted)
+    {
+        $this->post('/path/oper/remove/', array('path' => $file_to_be_deleted));
+        return $this;
+
+    }
+
+    /**
+     * Public wrapper for MOVE requests
+     *
+     * @param string $file_to_be_moved file client will download
+     * @param string $destination_folder the folder the client is moving their file to
+     *
+     * @return array
+     */
+    public function move($file_to_be_moved, $destination_folder)
+    {
+        $this->post('/path/oper/move/', array('src' => $file_to_be_moved, 'dst' => $destination_folder));
+        return $this;
     }
 }
 
